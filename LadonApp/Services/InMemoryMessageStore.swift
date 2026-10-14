@@ -64,7 +64,34 @@ final class InMemoryMessageStore: ObservableObject {
     // FIX MED-A12: Store timer reference for proper invalidation
     private var scrubTimer: Timer?
     
+    /// P8-AUDIT8-IOS-35: true once the history file was read (or none
+    /// existed). The file key is WhenUnlocked, so when iOS starts the app
+    /// while the device is locked (a push), the history cannot be loaded —
+    /// and a persist would overwrite the file with only what arrived since.
+    /// Persisting waits until the history is loaded; on unlock it is loaded
+    /// and merged first (`loadHistoryAfterUnlock`).
+    private var historyLoaded = false
+
+    #if DEBUG
+    /// Self-test only (`_historySelfTest`): an isolated file, a fixed key
+    /// and a simulated locked device. Never set on `shared`.
+    private var testFileURL: URL?
+    private var testKey: SymmetricKey?
+    private var testKeyLocked = false
+
+    private init(testFileURL: URL, testKey: SymmetricKey, locked: Bool) {
+        self.testFileURL = testFileURL
+        self.testKey = testKey
+        self.testKeyLocked = locked
+        setUp()
+    }
+    #endif
+
     private init() {
+        setUp()
+    }
+
+    private func setUp() {
         // FIX H-10: Periodic scrubbing timer — wipe stale messages every 60s
         scrubTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
             Task { @MainActor in
@@ -97,8 +124,28 @@ final class InMemoryMessageStore: ObservableObject {
                 #endif
             }
         }        
+        // P8-AUDIT8-IOS-35: a launch while locked could not read the history;
+        // load and merge it as soon as the device is unlocked.
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.protectedDataDidBecomeAvailableNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.loadHistoryAfterUnlock()
+            }
+        }
         // PUSH-15c: Load persisted messages on startup
-        loadPersistedMessages()    }
+        loadPersistedMessages()
+    }
+
+    /// Load the history that a locked launch could not read, merge it with
+    /// what arrived since (de-duplicated by id), then persist the union.
+    private func loadHistoryAfterUnlock() {
+        guard !historyLoaded, !isWiped else { return }
+        loadPersistedMessages()
+        if historyLoaded { persistMessages() }
+    }
     
     deinit {
         // FIX MED-A12: Invalidate timer on deallocation
@@ -355,6 +402,8 @@ final class InMemoryMessageStore: ObservableObject {
         // app and locks the device at almost the same moment) cannot
         // re-create it.
         isWiped = true
+        // A wipe ends the history on purpose — later messages persist normally.
+        historyLoaded = true
         // PUSH-15: Delete persisted file
         deletePersistedFile()
     }
@@ -527,6 +576,9 @@ final class InMemoryMessageStore: ObservableObject {
     /// PUSH-15c: Use Application Support with separate directory (NOT LadonDB which has .complete).
     /// Caches/ was wrong — iOS can purge it at any time.
     private var persistenceFileURL: URL? {
+        #if DEBUG
+        if let t = testFileURL { return t }
+        #endif
         guard let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
             return nil
         }
@@ -563,6 +615,9 @@ final class InMemoryMessageStore: ObservableObject {
     
     /// Get or create the 256-bit encryption key from Keychain
     private func getOrCreatePersistKey() -> SymmetricKey? {
+        #if DEBUG
+        if testFileURL != nil { return testKeyLocked ? nil : testKey }
+        #endif
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: Self.persistKeyAccount,
@@ -666,6 +721,13 @@ final class InMemoryMessageStore: ObservableObject {
     
     /// Persist all messages to encrypted file
     private func persistMessages() {
+        // P8-AUDIT8-IOS-35: never overwrite a history that was not read yet.
+        guard historyLoaded else {
+            #if DEBUG
+            NSLog("[InMemoryStore] persist deferred: history not loaded yet (device locked at launch)")
+            #endif
+            return
+        }
         guard let fileURL = persistenceFileURL,
               let key = getOrCreatePersistKey() else {
             #if DEBUG
@@ -717,6 +779,7 @@ final class InMemoryMessageStore: ObservableObject {
             #if DEBUG
             NSLog("[InMemoryStore] loadPersisted: no fileURL")
             #endif
+            historyLoaded = true    // no file location: nothing to protect
             return
         }
         
@@ -727,6 +790,7 @@ final class InMemoryMessageStore: ObservableObject {
             #if DEBUG
             NSLog("[InMemoryStore] loadPersisted: no file at %@", fileURL.path)
             #endif
+            historyLoaded = true    // no history yet
             return
         }
         
@@ -737,8 +801,18 @@ final class InMemoryMessageStore: ObservableObject {
             return
         }
         
+        // P8-AUDIT8-IOS-35: a read error (file locked by Data Protection) is
+        // not corruption — keep the file and retry after unlock.
+        let encryptedData: Data
         do {
-            let encryptedData = try Data(contentsOf: fileURL)
+            encryptedData = try Data(contentsOf: fileURL)
+        } catch {
+            #if DEBUG
+            NSLog("[InMemoryStore] loadPersisted: file not readable yet: %@", error.localizedDescription)
+            #endif
+            return
+        }
+        do {
             #if DEBUG
             NSLog("[InMemoryStore] loadPersisted: read %d bytes", encryptedData.count)
             #endif
@@ -782,6 +856,7 @@ final class InMemoryMessageStore: ObservableObject {
                 }
             }
             
+            historyLoaded = true
             #if DEBUG
             NSLog("[InMemoryStore] Loaded %d persisted messages from encrypted file", loadedCount)
             #endif
@@ -791,6 +866,7 @@ final class InMemoryMessageStore: ObservableObject {
             #endif
             // File corrupted or key mismatch — delete it
             try? FileManager.default.removeItem(at: fileURL)
+            historyLoaded = true    // nothing recoverable left
         }
     }
     
@@ -843,3 +919,68 @@ final class InMemoryMessageStore: ObservableObject {
         #endif
     }
 }
+
+#if DEBUG
+extension InMemoryMessageStore {
+    /// P8-AUDIT8-IOS-35: replays a launch while the device is locked, on an
+    /// isolated file (the real history is never touched): a history exists →
+    /// the app starts locked → a message arrives → something persists after
+    /// the unlock but before the unlock notification → the notification.
+    /// The history must survive every step. nil on success.
+    static func _historySelfTest() -> String? {
+        let url = FileManager.default.temporaryDirectory
+            .appendingPathComponent("msgstore-selftest-\(UUID().uuidString).enc")
+        defer { try? FileManager.default.removeItem(at: url) }
+        let key = SymmetricKey(size: .bits256)
+        let conv = "selftest-conversation"
+        func msg(_ id: String, ageSeconds: TimeInterval) -> Message {
+            Message(id: id, content: "x", timestamp: Date().addingTimeInterval(-ageSeconds),
+                    isOutgoing: false, conversationID: conv)
+        }
+        func fileIDs() -> Set<String>? {
+            guard let enc = try? Data(contentsOf: url),
+                  let box = try? ChaChaPoly.SealedBox(combined: enc),
+                  let plain = try? ChaChaPoly.open(box, using: key),
+                  let list = try? JSONDecoder.selfTestDecoder.decode([PersistableMessage].self, from: plain)
+            else { return nil }
+            return Set(list.map(\.id))
+        }
+
+        // 1. An unlocked session writes a history of two messages.
+        let first = InMemoryMessageStore(testFileURL: url, testKey: key, locked: false)
+        defer { first.scrubTimer?.invalidate() }
+        first.addMessages([msg("h1", ageSeconds: 60), msg("h2", ageSeconds: 50)])
+        guard fileIDs() == ["h1", "h2"] else { return "step 1: history not written" }
+
+        // 2. iOS starts the app while locked; a message arrives (push).
+        let second = InMemoryMessageStore(testFileURL: url, testKey: key, locked: true)
+        defer { second.scrubTimer?.invalidate() }
+        guard !second.historyLoaded else { return "step 2: history marked loaded while locked" }
+        second.addMessages([msg("n1", ageSeconds: 10)])
+        guard fileIDs() == ["h1", "h2"] else { return "step 2: history changed while locked" }
+
+        // 3. Unlocked, but a persist runs before the unlock notification
+        //    (backgrounding, another message). Before the fix this wrote
+        //    only n1 and the history was gone.
+        second.testKeyLocked = false
+        second.forcePersist()
+        guard fileIDs() == ["h1", "h2"] else { return "step 3: history overwritten before reload" }
+
+        // 4. The unlock notification: load, merge, persist the union.
+        second.loadHistoryAfterUnlock()
+        guard fileIDs() == ["h1", "h2", "n1"] else { return "step 4: merged history incomplete" }
+        guard Set(second.messages(for: conv).map(\.id)) == ["h1", "h2", "n1"] else {
+            return "step 4: store not merged"
+        }
+        return nil
+    }
+}
+
+private extension JSONDecoder {
+    static var selfTestDecoder: JSONDecoder {
+        let d = JSONDecoder()
+        d.dateDecodingStrategy = .secondsSince1970
+        return d
+    }
+}
+#endif

@@ -40,6 +40,12 @@ Every statement below points to the code that implements it.
   compiled into it, one active and one offline reserve key per host
   (`LadonApp/Security/CertificatePinning.swift`,
   `LadonApp/Attachments/BlobRelayPinning.swift`).
+- **Keys sealed with the Secure Enclave.** The identity, ratchet sessions,
+  one-time prekeys, delivery keys and contacts are stored in the iOS Keychain
+  only as ciphertext, sealed with a hybrid key held in Apple's Secure Enclave
+  (P-256 + ML-KEM-768) — `LadonApp/Crypto/V2/SealedKeychainV2.swift`. A
+  Keychain dump alone does not reveal them; code running on the unlocked
+  device can still use the chip.
 - **No phone number, no address book.** The identity is a key pair generated on
   the device (`LadonApp/Views/ContentView.swift:1117`); no phone number or e-mail
   is asked for. The app does not use the `Contacts` framework, and
@@ -59,7 +65,7 @@ There has been no external security audit.
 
 ## Building
 
-**iOS app** — Xcode with the iOS 27 SDK, deployment target iOS 17.0. Builds for
+**iOS app** — Xcode with the iOS 27 SDK, deployment target iOS 26.0 (the Secure Enclave offers ML-KEM from iOS 26 on). Builds for
 devices only: `LadonApp/Crypto/liboqs.a` has no simulator slice
 (`SUPPORTED_PLATFORMS = iphoneos`). Before the first build, download and verify
 `tor.xcframework` as described in `LadonApp/Frameworks/TOR_FRAMEWORK.lock`.

@@ -325,6 +325,14 @@ class SecurityUtils {
         let ladonService = "app.ladon.messenger"
         
         let queries: [[String: Any]] = [
+            // P8-AUDIT8-IOS-33 (audit F2): the Secure-Enclave chip keys first —
+            // without them every sealed V2 secret is unreadable, even if a
+            // later delete in this list were interrupted.
+            [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrService as String: SealedKeychainV2.chipService,
+                kSecAttrSynchronizable as String: false
+            ],
             // Generic passwords — all 5 active services
             [
                 kSecClass as String: kSecClassGenericPassword,

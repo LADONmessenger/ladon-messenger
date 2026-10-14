@@ -36,6 +36,9 @@ enum LadonV2SelfTest {
         results.append(testDeliveryKeyChoice())
         results.append(testSealedLaneSizes())
         results.append(testAttachmentChunkCountBound())
+        #if DEBUG
+        results.append(testSealedKeychainSecureEnclave())
+        #endif
 
         // PQ-dependent tests — require successful self-test of PostQuantumService.
         if PostQuantumService.shared.selfTestPassed {
@@ -1839,6 +1842,19 @@ enum LadonV2SelfTest {
             return Result(name: name, passed: true, detail: "cap \(PrekeyStoreV2.maxOwn) oldest-first; canSeal correct; Keychain save/update/load/list/delete OK")
         } catch { return Result(name: name, passed: false, detail: "\(error)") }
     }
+
+    #if DEBUG
+    /// P8-AUDIT8-IOS-33 (audit F2): the Keychain secrets are sealed with the
+    /// Secure Enclave — runs on the real chip (device only).
+    private static func testSealedKeychainSecureEnclave() -> Result {
+        let name = "SealedKeychainV2 (Secure Enclave, audit F2)"
+        if let failure = SealedKeychainV2._selfTest() {
+            return Result(name: name, passed: false, detail: failure)
+        }
+        return Result(name: name, passed: true,
+                      detail: "stored value is ciphertext; opens via chip; tamper, account and service binding rejected; \(SealedKeychainV2.lastStoreCheckCount) store items all sealed")
+    }
+    #endif
 
     /// P8-AUDIT8-IOS-12: `purgeExpiredOwnNow` (run at V2 start and on every
     /// return to the foreground) removes expired own prekeys and keeps the

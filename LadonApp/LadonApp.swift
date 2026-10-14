@@ -272,6 +272,7 @@ struct LadonApp: App {
                 // cleared so recreation-detection degrades safely, and a blanket
                 // kSecClassKey delete would be riskier than the benign reuse.
                 let ladonServices = [
+                    SealedKeychainV2.chipService,      // Secure-Enclave chip keys (audit F2)
                     "app.ladon.messenger",            // identity + catch-all: secure-storage key, DB key, blob auth, push tokens, SOCKS5, throttle, SE marker, …
                     "app.ladon.messenger.migrations",
                     "app.ladon.messenger.rasp",
@@ -669,6 +670,15 @@ struct LadonApp: App {
                     }
                     if !failed.isEmpty {
                         print("[V2-SELFTEST] ⚠️  \(failed.count) FAILURE(S) — investigate before relying on v2 wire format")
+                    }
+                }
+                // P8-AUDIT8-IOS-35: a launch while locked must not overwrite the
+                // message history (isolated test file, real history untouched).
+                Task { @MainActor in
+                    if let failure = InMemoryMessageStore._historySelfTest() {
+                        print("[MSGSTORE-SELFTEST] ❌ locked launch keeps history — \(failure)")
+                    } else {
+                        print("[MSGSTORE-SELFTEST] ✅ locked launch keeps history — no overwrite before reload; merged after unlock")
                     }
                 }
                 // P8-AUDIT8-IOS-00: the attachment self-tests existed but had no

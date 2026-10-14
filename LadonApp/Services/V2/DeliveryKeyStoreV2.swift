@@ -139,53 +139,13 @@ enum DeliveryKeyStoreV2 {
         try storeRaw(key, account: account)
     }
 
+    // P8-AUDIT8-IOS-33 (audit F2): values are sealed with the Secure Enclave.
     private static func loadRaw(account: String) throws -> Data? {
-        let q: [String: Any] = [
-            kSecClass as String:              kSecClassGenericPassword,
-            kSecAttrService as String:        kcService,
-            kSecAttrAccount as String:        account,
-            kSecReturnData as String:         true,
-            kSecMatchLimit as String:         kSecMatchLimitOne,
-            kSecAttrSynchronizable as String: false,
-        ]
-        var out: AnyObject?
-        let status = SecItemCopyMatching(q as CFDictionary, &out)
-        switch status {
-        case errSecSuccess:
-            guard let d = out as? Data else { throw DeliveryKeyStoreV2Error.malformedKey(0) }
-            return d
-        case errSecItemNotFound:
-            return nil
-        default:
-            throw DeliveryKeyStoreV2Error.keychain(status)
-        }
+        try SealedKeychainV2.read(service: kcService, account: account)
     }
 
-    /// Update-first / add-on-not-found upsert (same pattern as PeerStoreV2:
-    /// no window in which the item is missing).
     private static func storeRaw(_ key: Data, account: String) throws {
-        let base: [String: Any] = [
-            kSecClass as String:       kSecClassGenericPassword,
-            kSecAttrService as String: kcService,
-            kSecAttrAccount as String: account,
-        ]
-        let update: [String: Any] = [
-            kSecValueData as String:      key,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-        ]
-        let updateStatus = SecItemUpdate(base as CFDictionary, update as CFDictionary)
-        if updateStatus == errSecSuccess { return }
-        guard updateStatus == errSecItemNotFound else {
-            throw DeliveryKeyStoreV2Error.keychain(updateStatus)
-        }
-        var add = base
-        add[kSecValueData as String] = key
-        add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        add[kSecAttrSynchronizable as String] = false
-        let addStatus = SecItemAdd(add as CFDictionary, nil)
-        guard addStatus == errSecSuccess else {
-            throw DeliveryKeyStoreV2Error.keychain(addStatus)
-        }
+        try SealedKeychainV2.write(key, service: kcService, account: account)
     }
 }
 

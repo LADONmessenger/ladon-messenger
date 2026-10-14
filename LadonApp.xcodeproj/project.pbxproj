@@ -104,6 +104,7 @@
 		LV2INBF /* InnerEnvelopeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2INRF /* InnerEnvelopeV2.swift */; };
 		LV2STBF /* LadonV2SelfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2STRF /* LadonV2SelfTest.swift */; };
 		LV2STOBF /* IdentityStoreV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2STORF /* IdentityStoreV2.swift */; };
+		SKC2BF0000000001 /* SealedKeychainV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SKC2RF0000000001 /* SealedKeychainV2.swift */; };
 		LV2DKYBF /* DeliveryKeyV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2DKYRF /* DeliveryKeyV2.swift */; };
 		LV2WUTBF /* WireUtilV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2WUTRF /* WireUtilV2.swift */; };
 		MSGAP01F2A34B1C9D /* MessageAuthenticityProof.swift in Sources */ = {isa = PBXBuildFile; fileRef = MSGAP00F2A34B1C9D /* MessageAuthenticityProof.swift */; };
@@ -249,6 +250,7 @@
 		LV2IDSRF /* IdentifiersV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiersV2.swift; sourceTree = "<group>"; };
 		LV2INRF /* InnerEnvelopeV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerEnvelopeV2.swift; sourceTree = "<group>"; };
 		LV2STORF /* IdentityStoreV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityStoreV2.swift; sourceTree = "<group>"; };
+		SKC2RF0000000001 /* SealedKeychainV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealedKeychainV2.swift; sourceTree = "<group>"; };
 		LV2STRF /* LadonV2SelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadonV2SelfTest.swift; sourceTree = "<group>"; };
 		LV2DKYRF /* DeliveryKeyV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryKeyV2.swift; sourceTree = "<group>"; };
 		LV2WUTRF /* WireUtilV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireUtilV2.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				LV2HKMRF /* HKEMV2.swift */,
 				A2SRQRF /* SealedRequestV2.swift */,
 				LV2STORF /* IdentityStoreV2.swift */,
+				SKC2RF0000000001 /* SealedKeychainV2.swift */,
 				LV2DKYRF /* DeliveryKeyV2.swift */,
 				LV2BNDRF /* BundleV2.swift */,
 				LV2INRF /* InnerEnvelopeV2.swift */,
@@ -688,6 +691,7 @@
 				LV2HKMBF /* HKEMV2.swift in Sources */,
 				A2SRQBF /* SealedRequestV2.swift in Sources */,
 				LV2STOBF /* IdentityStoreV2.swift in Sources */,
+				SKC2BF0000000001 /* SealedKeychainV2.swift in Sources */,
 				LV2DKYBF /* DeliveryKeyV2.swift in Sources */,
 				LV2BNDBF /* BundleV2.swift in Sources */,
 				LV2STBF /* LadonV2SelfTest.swift in Sources */,
@@ -791,7 +795,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -889,7 +893,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -983,7 +987,7 @@
 					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64/Headers",
 					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64-simulator/Headers",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/LadonApp/Crypto",
@@ -1062,7 +1066,7 @@
 					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64/Headers",
 					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64-simulator/Headers",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/LadonApp/Crypto",

@@ -1418,48 +1418,13 @@ fileprivate final class KeychainRatchetBlobStore: V2RatchetBlobStore {
     let service: String
     init(service: String) { self.service = service }
 
+    // P8-AUDIT8-IOS-33 (audit F2): values are sealed with the Secure Enclave.
     func load(account: String) throws -> Data? {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
-            kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrSynchronizable as String: false,
-        ]
-        var result: AnyObject?
-        let status = SecItemCopyMatching(query as CFDictionary, &result)
-        switch status {
-        case errSecSuccess:
-            guard let data = result as? Data else { throw V2RatchetError.malformed("state item is not Data") }
-            return data
-        case errSecItemNotFound:
-            return nil
-        default:
-            throw V2RatchetError.keychain(status)
-        }
+        try SealedKeychainV2.read(service: service, account: account)
     }
 
     func save(_ blob: Data, account: String) throws {
-        let baseQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
-        ]
-        let update: [String: Any] = [
-            kSecValueData as String: blob,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-            kSecAttrSynchronizable as String: false,
-        ]
-        let updateStatus = SecItemUpdate(baseQuery as CFDictionary, update as CFDictionary)
-        if updateStatus == errSecSuccess { return }
-        if updateStatus != errSecItemNotFound { throw V2RatchetError.keychain(updateStatus) }
-        var add = baseQuery
-        add[kSecValueData as String] = blob
-        add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        add[kSecAttrSynchronizable as String] = false
-        let addStatus = SecItemAdd(add as CFDictionary, nil)
-        if addStatus != errSecSuccess { throw V2RatchetError.keychain(addStatus) }
+        try SealedKeychainV2.write(blob, service: service, account: account)
     }
 
     @discardableResult

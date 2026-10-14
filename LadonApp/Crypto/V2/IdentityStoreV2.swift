@@ -8,6 +8,7 @@
 //      service = "app.ladon.messenger.v2"
 //      account = "identity.v1"
 //      accessible = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+//      value      = sealed with the Secure Enclave (SealedKeychainV2)
 //      synchronizable = false
 //    • The item value is a property-list-encoded `IdentityBlobV2` containing
 //      all six raw key components (3 secrets, 3 publics).
@@ -69,30 +70,15 @@ enum IdentityStoreV2 {
     /// Returns the persisted identity if present; nil otherwise.
     /// Throws on corrupt blob, Keychain errors other than `errSecItemNotFound`.
     static func load() throws -> LocalIdentityV2? {
-        let q: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: kcService,
-            kSecAttrAccount as String: kcAccount,
-            kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne,
-            kSecAttrSynchronizable as String: false,
-        ]
-        var out: AnyObject?
-        let status = SecItemCopyMatching(q as CFDictionary, &out)
-        switch status {
-        case errSecSuccess:
-            guard var data = out as? Data else {
-                throw IdentityStoreV2Error.malformedBlob("keychain returned non-Data")
-            }
-            out = nil
-            // P8-AUDIT8-IOS-25: the serialized blob holds all four secret keys.
-            defer { data.securelyWipe() }
-            return try decode(data)
-        case errSecItemNotFound:
+        // P8-AUDIT8-IOS-33 (audit F2): the value is sealed with the Secure
+        // Enclave (SealedKeychainV2); a plaintext item from an earlier build
+        // is sealed on first read.
+        guard var data = try SealedKeychainV2.read(service: kcService, account: kcAccount) else {
             return nil
-        default:
-            throw IdentityStoreV2Error.keychain(status)
         }
+        // P8-AUDIT8-IOS-25: the serialized blob holds all four secret keys.
+        defer { data.securelyWipe() }
+        return try decode(data)
     }
 
     /// Wipe the persisted identity. Use only on full app reset / factory wipe.
@@ -160,42 +146,16 @@ enum IdentityStoreV2 {
     /// Add or update the Keychain item. The Add-then-Update pattern keeps the
     /// access-control attributes consistent across reinstalls.
     ///
-    /// Protection class (P8-AUDIT8-IOS-25, audit F2/F26 — the old comment here
-    /// claimed a "FIX F-CRYPTO-001" that the code never contained):
-    /// AfterFirstUnlockThisDeviceOnly, no access control, no Secure Enclave
-    /// wrap. AFU is REQUIRED, not an oversight: a push wake on a locked device
+    /// Protection class (P8-AUDIT8-IOS-25, audit F2/F26):
+    /// AfterFirstUnlockThisDeviceOnly, and since P8-AUDIT8-IOS-33 the value is
+    /// sealed with a Secure-Enclave key (SealedKeychainV2). AFU is REQUIRED: a push wake on a locked device
     /// signs the FETCH with the HSig secret keys and opens envelopes with the
     /// HKEM secret keys (RelayClientV2 fetch/open), and no UI can be shown
     /// there. A "send-only" key under WhenUnlocked + userPresence does not
-    /// help either — FETCH is signed with the same HSig key. Real hardening is
-    /// Issue #11: a Secure-Enclave key (AFU, no biometry flag) wrapping this
-    /// blob, or a separate fetch key, which changes bundle and exit checks.
+    /// help either — FETCH is signed with the same HSig key. The Secure-Enclave
+    /// key (AFU, no biometry flag) wraps this blob instead (Issue #11).
     private static func storeAtomically(_ data: Data) throws {
-        let baseQuery: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: kcService,
-            kSecAttrAccount as String: kcAccount,
-        ]
-        // Try update first.
-        let updateAttrs: [String: Any] = [
-            kSecValueData as String: data,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-            kSecAttrSynchronizable as String: false,
-        ]
-        let updateStatus = SecItemUpdate(baseQuery as CFDictionary, updateAttrs as CFDictionary)
-        if updateStatus == errSecSuccess { return }
-        if updateStatus != errSecItemNotFound {
-            throw IdentityStoreV2Error.keychain(updateStatus)
-        }
-        // Not found → add.
-        var addQuery = baseQuery
-        addQuery[kSecValueData as String] = data
-        addQuery[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        addQuery[kSecAttrSynchronizable as String] = false
-        let addStatus = SecItemAdd(addQuery as CFDictionary, nil)
-        if addStatus != errSecSuccess {
-            throw IdentityStoreV2Error.keychain(addStatus)
-        }
+        try SealedKeychainV2.write(data, service: kcService, account: kcAccount)
     }
 
     // MARK: - Internal: decode

@@ -245,6 +245,16 @@ class InactivityManager: NSObject, ObservableObject {
         // redundantly delete again (idempotent — SecItemDelete on missing item is a no-op).
         // FIX AUDIT-R9-13: Use correct service "app.ladon.messenger" (was using phantom services
         // like "app.ladon.identityKey" that don't exist — all items use "app.ladon.messenger" with different accounts)
+        // P8-AUDIT8-IOS-33 (audit F2): the Secure-Enclave chip keys first —
+        // this one delete makes every sealed V2 secret (identity, ratchet,
+        // prekeys, delivery keys, contacts) unreadable at once.
+        let chipStatus = SecItemDelete([
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: SealedKeychainV2.chipService,
+        ] as CFDictionary)
+        if chipStatus != errSecSuccess && chipStatus != errSecItemNotFound {
+            SecureLogger.error("Panic mode: Failed to delete chip keys: OSStatus \(chipStatus)")
+        }
         let criticalKeychainAccounts = [
             "identity_key",
             "identity_key_private",
