@@ -450,8 +450,27 @@ struct SettingsView: View {
                 
 
                 glassSection(header: "Info") {
-                    FreeOpenSourceNotice()
-                        .padding(16)
+                    VStack(spacing: 0) {
+                        FreeOpenSourceNotice()
+                            .padding(16)
+                        cardDivider
+                        NavigationLink {
+                            OpenSourceLicensesView()
+                        } label: {
+                            HStack {
+                                Text("Open-source licenses")
+                                    .font(isDark ? .body : .manrope(15.5, .bold))
+                                    .foregroundColor(LadonTheme.textPrimary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 13, weight: .semibold))
+                                    .foregroundColor(LadonTheme.inkMuted)
+                            }
+                            .padding(.horizontal, 16).padding(.vertical, 13)
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                    }
                 }
 
                 // H3: Panic Button - Emergency Zeroize

@@ -4819,6 +4819,46 @@
           }
         }
       }
+    },
+    "Open-source licenses": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open-Source-Lizenzen"
+          }
+        }
+      }
+    },
+    "LADON messenger is free software, licensed under the GNU Affero General Public License v3.0.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger ist freie Software unter der GNU Affero General Public License v3.0."
+          }
+        }
+      }
+    },
+    "Source code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quellcode"
+          }
+        }
+      }
+    },
+    "Third-party components": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komponenten von Drittanbietern"
+          }
+        }
+      }
     }
   },
   "version": "1.1"
