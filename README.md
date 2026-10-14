@@ -32,6 +32,10 @@ Every statement below points to the code that implements it.
   build refuses to create a network session without Tor — there is no clearnet
   fallback (`LadonApp/Services/V2/V2SessionManager.swift:555-580`; the direct
   connection exists only in debug builds).
+  One exception the user starts: the optional tip screen
+  (`LadonApp/Views/SupportView.swift`) asks Apple's App Store for the tip
+  amounts only after a tap on "Show amounts"; StoreKit reaches Apple
+  directly, not through Tor, and the screen says so first.
 - **Fixed-size requests.** Requests travel in fixed-size sealed frames:
   16,384 bytes on the send lane and 8,192 bytes on the fetch lane
   (`LadonApp/Crypto/V2/SealedRequestV2.swift:89-101`); the relays use the same

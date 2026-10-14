@@ -93,6 +93,7 @@
 		LTHM0BF0000000001 /* LadonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = LTHM0RF0000000001 /* LadonTheme.swift */; };
 		OSLC0BF0000000001 /* OpenSourceLicenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = OSLC0RF0000000001 /* OpenSourceLicenses.swift */; };
 		OSLV0BF0000000001 /* OpenSourceLicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OSLV0RF0000000001 /* OpenSourceLicensesView.swift */; };
+		SUPV0BF0000000001 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SUPV0RF0000000001 /* SupportView.swift */; };
 		LV2BLK3BF /* Blake3.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2BLK3RF /* Blake3.swift */; };
 		LV2BNDBF /* BundleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2BNDRF /* BundleV2.swift */; };
 		LV2CLBF /* LadonV2CrossLangVectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2CLRF /* LadonV2CrossLangVectors.swift */; };
@@ -225,6 +226,7 @@
 		DC9C6FC36B963F102FFBD5BF /* SecureLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecureLogger.swift; path = Security/SecureLogger.swift; sourceTree = "<group>"; };
 		E56B8E106B0E4C73A7B11B0D /* TorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorSettingsView.swift; sourceTree = "<group>"; };
 		OSLV0RF0000000001 /* OpenSourceLicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicensesView.swift; sourceTree = "<group>"; };
+		SUPV0RF0000000001 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		E961C74053FB1869B9D2CE8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		ENCDB00F2A34B1C9D5E7F00 /* EncryptedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EncryptedDatabase.swift; path = Security/EncryptedDatabase.swift; sourceTree = "<group>"; };
 		EXBOOT0RF0000000001 /* exits-bootstrap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "exits-bootstrap.json"; path = "LadonApp/Resources/exits-bootstrap.json"; sourceTree = SOURCE_ROOT; };
@@ -381,6 +383,7 @@
 				INAWV00F2A34B1C9D /* InactivityWarningView.swift */,
 				E56B8E106B0E4C73A7B11B0D /* TorSettingsView.swift */,
 				OSLV0RF0000000001 /* OpenSourceLicensesView.swift */,
+				SUPV0RF0000000001 /* SupportView.swift */,
 				1A000002 /* ContentView.swift */,
 				1A000099 /* SettingsView.swift */,
 				SECV0RF0000000001 /* SecurityView.swift */,
@@ -668,6 +671,7 @@
 				B8C0E6D1F2A34B1C9D5E7F03 /* IPtProxyBridge.m in Sources */,
 				A805B03131914401836A6627 /* TorSettingsView.swift in Sources */,
 				OSLV0BF0000000001 /* OpenSourceLicensesView.swift in Sources */,
+				SUPV0BF0000000001 /* SupportView.swift in Sources */,
 				AA0SEC01F2A34B1C9D5E7F01 /* SecureStorage.swift in Sources */,
 				ENCDB01F2A34B1C9D5E7F01 /* EncryptedDatabase.swift in Sources */,
 				36A32725FC58231793F8A697 /* SecureLogger.swift in Sources */,

@@ -1,56 +1,147 @@
 {
-  "identifier" : "1A2B3C4D",
-  "nonRenewingSubscriptions" : [
-
-  ],
-  "products" : [
-
-  ],
-  "settings" : {
-
-  },
-  "subscriptionGroups" : [
+  "identifier": "1A2B3C4D",
+  "nonRenewingSubscriptions": [],
+  "products": [
     {
-      "id" : "7E5F6A1B",
-      "localizations" : [
-
-      ],
-      "name" : "LADON Pro",
-      "subscriptions" : [
+      "displayPrice": "5.00",
+      "familyShareable": false,
+      "internalID": "71900000",
+      "localizations": [
         {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "1.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "2C3D4E5F",
-          "introductoryOffer" : {
-            "internalID" : "3D4E5F6A",
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P1W"
-          },
-          "localizations" : [
-            {
-              "description" : "Full access to LADON messenger — end-to-end encrypted, post-quantum, Tor-routed.",
-              "displayName" : "LADON messenger — Monthly",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "app.ladon.messenger.pro.monthly",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "LADON Monthly",
-          "subscriptionGroupID" : "7E5F6A1B",
-          "type" : "RecurringSubscription"
+          "description": "A one-time tip of CHF 5 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 5",
+          "locale": "en_US"
         }
-      ]
+      ],
+      "productID": "app.ladon.messenger.tip.5",
+      "referenceName": "Tip 5",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "10.00",
+      "familyShareable": false,
+      "internalID": "71900001",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 10 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 10",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.10",
+      "referenceName": "Tip 10",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "15.00",
+      "familyShareable": false,
+      "internalID": "71900002",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 15 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 15",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.15",
+      "referenceName": "Tip 15",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "20.00",
+      "familyShareable": false,
+      "internalID": "71900003",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 20 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 20",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.20",
+      "referenceName": "Tip 20",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "25.00",
+      "familyShareable": false,
+      "internalID": "71900004",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 25 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 25",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.25",
+      "referenceName": "Tip 25",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "50.00",
+      "familyShareable": false,
+      "internalID": "71900005",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 50 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 50",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.50",
+      "referenceName": "Tip 50",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "100.00",
+      "familyShareable": false,
+      "internalID": "71900006",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 100 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 100",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.100",
+      "referenceName": "Tip 100",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "500.00",
+      "familyShareable": false,
+      "internalID": "71900007",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 500 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 500",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.500",
+      "referenceName": "Tip 500",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "1000.00",
+      "familyShareable": false,
+      "internalID": "71900008",
+      "localizations": [
+        {
+          "description": "A one-time tip of CHF 1000 towards the servers. Unlocks nothing.",
+          "displayName": "Tip CHF 1000",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.ladon.messenger.tip.1000",
+      "referenceName": "Tip 1000",
+      "type": "Consumable"
     }
   ],
-  "version" : {
-    "major" : 2,
-    "minor" : 0
+  "settings": {},
+  "subscriptionGroups": [],
+  "version": {
+    "major": 2,
+    "minor": 0
   }
 }

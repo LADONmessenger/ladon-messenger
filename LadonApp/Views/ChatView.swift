@@ -645,7 +645,8 @@ struct ChatView: View {
                         .disabled(attachmentSending)
                         .accessibilityLabel("Attach media")
                     }
-                    QuickPathTextField(text: $messageText, placeholder: "Message", onCommit: sendMessage)
+                    // UIKit placeholder: a plain String is not reached by the in-app locale.
+                    QuickPathTextField(text: $messageText, placeholder: LanguageManager.localized("Message"), onCommit: sendMessage)
                         .frame(height: 36)
                         .padding(.horizontal, isDark ? 14 : 2)
                         .background(messageFieldBackground)

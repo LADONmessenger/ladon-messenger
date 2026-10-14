@@ -4859,6 +4859,96 @@
           }
         }
       }
+    },
+    "Amount": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Betrag"
+          }
+        }
+      }
+    },
+    "LADON messenger is free. A tip helps pay for the servers. It is voluntary, one-time, and unlocks nothing.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger ist kostenlos. Ein Trinkgeld hilft, die Server zu bezahlen. Es ist freiwillig, einmalig und schaltet nichts frei."
+          }
+        }
+      }
+    },
+    "Leave a tip": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trinkgeld geben"
+          }
+        }
+      }
+    },
+    "Payment is handled by Apple. To show the amounts, the app contacts the App Store directly, not through Tor. Apple then sees that this device opened the tip screen.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Zahlung läuft über Apple. Um die Beträge anzuzeigen, verbindet sich die App direkt mit dem App Store, nicht über Tor. Apple sieht dann, dass dieses Gerät die Trinkgeld-Seite geöffnet hat."
+          }
+        }
+      }
+    },
+    "Show amounts": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beträge anzeigen"
+          }
+        }
+      }
+    },
+    "Thank you.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danke."
+          }
+        }
+      }
+    },
+    "The App Store could not be reached.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der App Store ist nicht erreichbar."
+          }
+        }
+      }
+    },
+    "Try again": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut versuchen"
+          }
+        }
+      }
+    },
+    "Your tip helps keep the servers running.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Trinkgeld hilft, die Server am Laufen zu halten."
+          }
+        }
+      }
     }
   },
   "version": "1.1"
