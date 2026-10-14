@@ -1,0 +1,1119 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01370597600D596CECECDCA4 /* Phase2Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4EB0A3F0D19B5C5A6CC146 /* Phase2Platform.swift */; };
+		03EC3E242F2E2759003D5D41 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		1A000001 /* LadonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000000 /* LadonApp.swift */; };
+		1A000003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000002 /* ContentView.swift */; };
+		1A000004 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000099 /* SettingsView.swift */; };
+		SECV0BF0000000001 /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SECV0RF0000000001 /* SecurityView.swift */; };
+		1A000011 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000010 /* ConversationListView.swift */; };
+		1A000013 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000012 /* ChatView.swift */; };
+		1A000021 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000020 /* Message.swift */; };
+		1A000023 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000022 /* Conversation.swift */; };
+		1A000025 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000024 /* Contact.swift */; };
+		1A000032 /* TorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000033 /* TorManager.swift */; };
+		1A000041 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000040 /* KeyManager.swift */; };
+		240DDED071A64E6E9C7494C0 /* IPtProxy.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FDFACBACFBDD48BFAD0AD6CD /* IPtProxy.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		25B08229CE1B12A5 /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9267B006C1142D6 /* Manrope-ExtraBold.ttf */; };
+		FADE000000000B01 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F01 /* Manrope-Regular.ttf */; };
+		FADE000000000B02 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F02 /* Manrope-Medium.ttf */; };
+		FADE000000000B03 /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F03 /* Manrope-SemiBold.ttf */; };
+		FADE000000000B04 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F04 /* Manrope-Bold.ttf */; };
+		FADE000000000B05 /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F05 /* JetBrainsMono-Regular.ttf */; };
+		FADE000000000B06 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F06 /* JetBrainsMono-Medium.ttf */; };
+		2A0EF85875ED418C028DCB65 /* SafetyNumbersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA100439C153DE93585E16DF /* SafetyNumbersView.swift */; };
+		36A32725FC58231793F8A697 /* SecureLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9C6FC36B963F102FFBD5BF /* SecureLogger.swift */; };
+		4641AF73AAC46A88C5AA7F2D /* liboqs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85159215784DE245A61CDCC5 /* liboqs.a */; };
+		4A040C47B5D10B2E32FDD0D6 /* JailbreakDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C9DE52DEEAE8F2754B23AD /* JailbreakDetector.swift */; };
+		4F7E4435EC994A65A83EBEBF /* tor.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5137C35A542146F191FF9984 /* tor.xcframework */; };
+		541E8DAABDBD4890B12FFBFD /* SilentPushHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491B89BA00D49D0B18951D4 /* SilentPushHandler.swift */; };
+		5AC61F1A13A14B9EBAC34AC8 /* IPtProxy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDFACBACFBDD48BFAD0AD6CD /* IPtProxy.xcframework */; };
+		6A54484A0CD084C5D0F88A28 /* Phase4Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE34872C29F48EF7592856C /* Phase4Hardware.swift */; };
+		6D7B05AAF270801D0DEF8E02 /* QuickWinsPhase1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CB659D0D98067285302124 /* QuickWinsPhase1.swift */; };
+		742C9833F5DA17482921C6CB /* ScreenshotPreventionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0FAC16C166853CF3F0725B /* ScreenshotPreventionView.swift */; };
+		A805B03131914401836A6627 /* TorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56B8E106B0E4C73A7B11B0D /* TorSettingsView.swift */; };
+		AA0SEC01F2A34B1C9D5E7F01 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0SEC00F2A34B1C9D5E7F00 /* SecureStorage.swift */; };
+		ABUB0BF0000000001 /* AttachmentBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABUB0RF0000000001 /* AttachmentBubbleView.swift */; };
+		ACCP0BF0000000001 /* AttachmentChunkCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCP0RF0000000001 /* AttachmentChunkCipher.swift */; };
+		ACST0BF0000000001 /* AttachmentCryptoSelfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACST0RF0000000001 /* AttachmentCryptoSelfTest.swift */; };
+		ADNL0BF0000000001 /* AttachmentDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADNL0RF0000000001 /* AttachmentDownloader.swift */; };
+		AKDV0BF0000000001 /* AttachmentKeyDerivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AKDV0RF0000000001 /* AttachmentKeyDerivation.swift */; };
+		AMPL0BF0000000001 /* AttachmentMessagePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = AMPL0RF0000000001 /* AttachmentMessagePayload.swift */; };
+		AMPL0BF0000000002 /* AttachmentMessagePayloadV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AMPL0RF0000000002 /* AttachmentMessagePayloadV2.swift */; };
+		AMRK0BF0000000001 /* AttachmentMerkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AMRK0RF0000000001 /* AttachmentMerkle.swift */; };
+		ARCV0BF0000000001 /* AttachmentReceiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ARCV0RF0000000001 /* AttachmentReceiveService.swift */; };
+		ARG2BF02F2A34B1C9D /* LadonArgon2 in Frameworks */ = {isa = PBXBuildFile; productRef = ARG2PD01F2A34B1C9D /* LadonArgon2 */; };
+		ARST0BF0000000001 /* AttachmentRoundtripSelfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ARST0RF0000000001 /* AttachmentRoundtripSelfTest.swift */; };
+		ASAN0BF0000000001 /* AudioSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ASAN0RF0000000001 /* AudioSanitizer.swift */; };
+		ASLR0BF0000000001 /* AttachmentSealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ASLR0RF0000000001 /* AttachmentSealer.swift */; };
+		ASLT0BF0000000001 /* AttachmentSlotCipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ASLT0RF0000000001 /* AttachmentSlotCipher.swift */; };
+		ASND0BF0000000001 /* AttachmentSendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ASND0RF0000000001 /* AttachmentSendService.swift */; };
+		ASSET0BF0000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ASSET0RF0000000001 /* Assets.xcassets */; };
+		ASWP0BF0000000001 /* AttachmentSeedWrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = ASWP0RF0000000001 /* AttachmentSeedWrap.swift */; };
+		ATBP0BF0000000001 /* BucketPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATBP0RF0000000001 /* BucketPadding.swift */; };
+		ATIS0BF0000000001 /* ImageSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATIS0RF0000000001 /* ImageSanitizer.swift */; };
+		ATLI0BF0000000001 /* AttachmentLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATLI0RF0000000001 /* AttachmentLimits.swift */; };
+		ATPR0BF0000000001 /* AttachmentPreparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATPR0RF0000000001 /* AttachmentPreparation.swift */; };
+		ATTG0BF0000000001 /* ThumbnailGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATTG0RF0000000001 /* ThumbnailGenerator.swift */; };
+		ATTY0BF0000000001 /* AttachmentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ATTY0RF0000000001 /* AttachmentTypes.swift */; };
+		AUPL0BF0000000001 /* AttachmentUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AUPL0RF0000000001 /* AttachmentUploader.swift */; };
+		AUSL0BF0000000001 /* AttachmentUnsealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AUSL0RF0000000001 /* AttachmentUnsealer.swift */; };
+		AVRO0BF0000000001 /* VoiceRecorderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AVRO0RF0000000001 /* VoiceRecorderOverlay.swift */; };
+		B3CBF /* blake3.c in Sources */ = {isa = PBXBuildFile; fileRef = B3CRF /* blake3.c */; };
+		B3DBF /* blake3_dispatch.c in Sources */ = {isa = PBXBuildFile; fileRef = B3DRF /* blake3_dispatch.c */; settings = {COMPILER_FLAGS = "-Wno-unreachable-code -Wno-unused-function"; }; };
+		B3NBF /* blake3_neon.c in Sources */ = {isa = PBXBuildFile; fileRef = B3NRF /* blake3_neon.c */; };
+		B3PBF /* blake3_portable.c in Sources */ = {isa = PBXBuildFile; fileRef = B3PRF /* blake3_portable.c */; };
+		B8C0E6D1F2A34B1C9D5E7F03 /* IPtProxyBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C0E6D1F2A34B1C9D5E7F02 /* IPtProxyBridge.m */; };
+		BHST0BF0000000001 /* BlobHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BHST0RF0000000001 /* BlobHost.swift */; };
+		BIOAU01F2A34B1C9D /* BiometricAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BIOAU00F2A34B1C9D /* BiometricAuthService.swift */; };
+		BRCL0BF0000000001 /* BlobRelayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BRCL0RF0000000001 /* BlobRelayClient.swift */; };
+		BRPN0BF0000000001 /* BlobRelayPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BRPN0RF0000000001 /* BlobRelayPinning.swift */; };
+		C88EA4299B04961C3B8DF21E /* OQSWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7BB39DE1A8C650AC613BC /* OQSWrapper.m */; };
+		CERTPIN00BUILD001 /* CertificatePinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CERTPIN00FILE0001 /* CertificatePinning.swift */; };
+		CFB6A12752126FC469DEE233 /* MemoryProtector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD14C69BC276E24E7A2750A /* MemoryProtector.swift */; };
+		ENCDB01F2A34B1C9D5E7F01 /* EncryptedDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ENCDB00F2A34B1C9D5E7F00 /* EncryptedDatabase.swift */; };
+		EXBOOT0BF0000000001 /* exits-bootstrap.json in Resources */ = {isa = PBXBuildFile; fileRef = EXBOOT0RF0000000001 /* exits-bootstrap.json */; };
+		F649902B98174A8DB4D756B6 /* TorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2691CE04E54B69A26FB69F /* TorController.swift */; };
+		FTFL0BF0000000001 /* FeatureFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = FTFL0RF0000000001 /* FeatureFlags.swift */; };
+		INACT01F2A34B1C9D /* InactivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = INACT00F2A34B1C9D /* InactivityManager.swift */; };
+		INAWV01F2A34B1C9D /* InactivityWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = INAWV00F2A34B1C9D /* InactivityWarningView.swift */; };
+		INMEM001 /* InMemoryMessageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = INMEM000 /* InMemoryMessageStore.swift */; };
+		LANG0BF0000000001 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = LANG0RF0000000001 /* LanguageManager.swift */; };
+		LCXS0BF0000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = LCXS0RF0000000001 /* Localizable.xcstrings */; };
+		PRIV0BF0000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = PRIV0RF0000000001 /* PrivacyInfo.xcprivacy */; };
+		IPXS0BF0000000001 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = IPXS0RF0000000001 /* InfoPlist.xcstrings */; };
+		LINT0BF0000000001 /* LogoIntroAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = LINT0RF0000000001 /* LogoIntroAnimation.swift */; };
+		LTHM0BF0000000001 /* LadonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = LTHM0RF0000000001 /* LadonTheme.swift */; };
+		LV2BLK3BF /* Blake3.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2BLK3RF /* Blake3.swift */; };
+		LV2BNDBF /* BundleV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2BNDRF /* BundleV2.swift */; };
+		LV2CLBF /* LadonV2CrossLangVectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2CLRF /* LadonV2CrossLangVectors.swift */; };
+		LV2CONSBF /* ProtocolConstantsV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2CONSRF /* ProtocolConstantsV2.swift */; };
+		LV2HKMBF /* HKEMV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2HKMRF /* HKEMV2.swift */; };
+		A2SRQBF /* SealedRequestV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2SRQRF /* SealedRequestV2.swift */; };
+		LV2HSGBF /* HSigV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2HSGRF /* HSigV2.swift */; };
+		LV2IDSBF /* IdentifiersV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2IDSRF /* IdentifiersV2.swift */; };
+		LV2INBF /* InnerEnvelopeV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2INRF /* InnerEnvelopeV2.swift */; };
+		LV2STBF /* LadonV2SelfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2STRF /* LadonV2SelfTest.swift */; };
+		LV2STOBF /* IdentityStoreV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2STORF /* IdentityStoreV2.swift */; };
+		LV2DKYBF /* DeliveryKeyV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2DKYRF /* DeliveryKeyV2.swift */; };
+		LV2WUTBF /* WireUtilV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = LV2WUTRF /* WireUtilV2.swift */; };
+		MSGAP01F2A34B1C9D /* MessageAuthenticityProof.swift in Sources */ = {isa = PBXBuildFile; fileRef = MSGAP00F2A34B1C9D /* MessageAuthenticityProof.swift */; };
+		POSTQSBF0000000000000001 /* PostQuantumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = POSTQSRF0000000000000001 /* PostQuantumService.swift */; };
+		SACH0BF0000000001 /* SenderAttachmentCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = SACH0RF0000000001 /* SenderAttachmentCache.swift */; };
+		SAFNM01F2A34B1C9D /* SafetyNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = SAFNM00F2A34B1C9D /* SafetyNumbers.swift */; };
+		SCDET01F2A34B1C9D /* ScreenshotDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = SCDET00F2A34B1C9D /* ScreenshotDetector.swift */; };
+		SECEX01F2A34B1C9D /* SecurityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = SECEX00F2A34B1C9D /* SecurityExtensions.swift */; };
+		SECUT01F2A34B1C9D /* SecurityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = SECUT00F2A34B1C9D /* SecurityUtils.swift */; };
+		SFTSTBF01F2A34B1C /* SecurityFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = SFTSTRF01F2A34B1C /* SecurityFeatureTests.swift */; };
+		SQLC000000000002 /* SQLCipher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = SQLC000000000001 /* SQLCipher.xcframework */; };
+		SV2BSBF /* V2BootstrapSelfTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2BSRF /* V2BootstrapSelfTest.swift */; };
+		SV2DCBF /* DirectoryClientV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2DCRF /* DirectoryClientV2.swift */; };
+		SV2ECBF /* EnqueueClientV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2ECRF /* EnqueueClientV2.swift */; };
+		SV2ERBF /* ExitRegistryV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2ERRF /* ExitRegistryV2.swift */; };
+		SV2FCBF /* FetchClientV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2FCRF /* FetchClientV2.swift */; };
+		SV2CSBF /* ClockSyncV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2CSRF /* ClockSyncV2.swift */; };
+		A2LNSBF /* LaneSchedulerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2LNSRF /* LaneSchedulerV2.swift */; };
+		A2STRBF /* SealedTransportV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2STRRF /* SealedTransportV2.swift */; };
+		SV2PRBF /* PushRegistrationClientV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2PRRF /* PushRegistrationClientV2.swift */; };
+		SV2PSBF /* PeerStoreV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2PSRF /* PeerStoreV2.swift */; };
+		SV2PKBF /* PrekeyStoreV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2PKRF /* PrekeyStoreV2.swift */; };
+		SV2PCBF /* PairingCodeV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2PCRF /* PairingCodeV4.swift */; };
+		SV2RCBF /* RelayClientV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2RCRF /* RelayClientV2.swift */; };
+		SV2SMBF /* V2SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2SMRF /* V2SessionManager.swift */; };
+		SV2DKSBF /* DeliveryKeyStoreV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2DKSRF /* DeliveryKeyStoreV2.swift */; };
+		SV2BLKBF /* BlockingV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = SV2BLKRF /* BlockingV2.swift */; };
+		VSAN0BF0000000001 /* VideoSanitizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = VSAN0RF0000000001 /* VideoSanitizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8C0E6D1F2A34B1C9D5E7F11 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				240DDED071A64E6E9C7494C0 /* IPtProxy.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0DE34872C29F48EF7592856C /* Phase4Hardware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security/Phase4Hardware.swift; sourceTree = "<group>"; };
+		1A000000 /* LadonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadonApp.swift; sourceTree = "<group>"; };
+		1A000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A000010 /* ConversationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
+		1A000012 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		1A000020 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1A000022 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		1A000024 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		1A000033 /* TorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorManager.swift; sourceTree = "<group>"; };
+		1A000040 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		1A000050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A000099 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		SECV0RF0000000001 /* SecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
+		1AAPP001 /* Ladon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ladon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		346DC9CC2770D3FC5C187E12 /* Ladon.storekit */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstorekit; includeInIndex = 1; path = Ladon.storekit; sourceTree = "<group>"; };
+		3F0FAC16C166853CF3F0725B /* ScreenshotPreventionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenshotPreventionView.swift; path = Security/ScreenshotPreventionView.swift; sourceTree = "<group>"; };
+		5137C35A542146F191FF9984 /* tor.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = tor.xcframework; path = LadonApp/Frameworks/tor.xcframework; sourceTree = SOURCE_ROOT; };
+		61CB659D0D98067285302124 /* QuickWinsPhase1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security/QuickWinsPhase1.swift; sourceTree = "<group>"; };
+		64C9DE52DEEAE8F2754B23AD /* JailbreakDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security/JailbreakDetector.swift; sourceTree = "<group>"; };
+		8491B89BA00D49D0B18951D4 /* SilentPushHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SilentPushHandler.swift; sourceTree = "<group>"; };
+		85159215784DE245A61CDCC5 /* liboqs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liboqs.a; path = LadonApp/Crypto/liboqs.a; sourceTree = SOURCE_ROOT; };
+		8EF7BB39DE1A8C650AC613BC /* OQSWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OQSWrapper.m; path = LadonApp/Crypto/OQSWrapper.m; sourceTree = SOURCE_ROOT; };
+		9E4EB0A3F0D19B5C5A6CC146 /* Phase2Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security/Phase2Platform.swift; sourceTree = "<group>"; };
+		AA0SEC00F2A34B1C9D5E7F00 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecureStorage.swift; path = Security/SecureStorage.swift; sourceTree = "<group>"; };
+		ABUB0RF0000000001 /* AttachmentBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/AttachmentBubbleView.swift; sourceTree = "<group>"; };
+		ACCP0RF0000000001 /* AttachmentChunkCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentChunkCipher.swift; sourceTree = "<group>"; };
+		ACST0RF0000000001 /* AttachmentCryptoSelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentCryptoSelfTest.swift; sourceTree = "<group>"; };
+		ADNL0RF0000000001 /* AttachmentDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentDownloader.swift; sourceTree = "<group>"; };
+		AKDV0RF0000000001 /* AttachmentKeyDerivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentKeyDerivation.swift; sourceTree = "<group>"; };
+		AMPL0RF0000000001 /* AttachmentMessagePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentMessagePayload.swift; sourceTree = "<group>"; };
+		AMPL0RF0000000002 /* AttachmentMessagePayloadV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentMessagePayloadV2.swift; sourceTree = "<group>"; };
+		AMRK0RF0000000001 /* AttachmentMerkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentMerkle.swift; sourceTree = "<group>"; };
+		ARCV0RF0000000001 /* AttachmentReceiveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentReceiveService.swift; sourceTree = "<group>"; };
+		ARST0RF0000000001 /* AttachmentRoundtripSelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentRoundtripSelfTest.swift; sourceTree = "<group>"; };
+		ASAN0RF0000000001 /* AudioSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AudioSanitizer.swift; sourceTree = "<group>"; };
+		ASLR0RF0000000001 /* AttachmentSealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentSealer.swift; sourceTree = "<group>"; };
+		ASLT0RF0000000001 /* AttachmentSlotCipher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentSlotCipher.swift; sourceTree = "<group>"; };
+		ASND0RF0000000001 /* AttachmentSendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentSendService.swift; sourceTree = "<group>"; };
+		ASSET0RF0000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ASWP0RF0000000001 /* AttachmentSeedWrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentSeedWrap.swift; sourceTree = "<group>"; };
+		ATBP0RF0000000001 /* BucketPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/BucketPadding.swift; sourceTree = "<group>"; };
+		ATIS0RF0000000001 /* ImageSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/ImageSanitizer.swift; sourceTree = "<group>"; };
+		ATLI0RF0000000001 /* AttachmentLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentLimits.swift; sourceTree = "<group>"; };
+		ATPR0RF0000000001 /* AttachmentPreparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentPreparation.swift; sourceTree = "<group>"; };
+		ATTG0RF0000000001 /* ThumbnailGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/ThumbnailGenerator.swift; sourceTree = "<group>"; };
+		ATTY0RF0000000001 /* AttachmentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentTypes.swift; sourceTree = "<group>"; };
+		AUPL0RF0000000001 /* AttachmentUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentUploader.swift; sourceTree = "<group>"; };
+		AUSL0RF0000000001 /* AttachmentUnsealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/AttachmentUnsealer.swift; sourceTree = "<group>"; };
+		AVRO0RF0000000001 /* VoiceRecorderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/VoiceRecorderOverlay.swift; sourceTree = "<group>"; };
+		B3CRF /* blake3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blake3.c; sourceTree = "<group>"; };
+		B3DRF /* blake3_dispatch.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blake3_dispatch.c; sourceTree = "<group>"; };
+		B3HRF /* blake3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blake3.h; sourceTree = "<group>"; };
+		B3IRF /* blake3_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = blake3_impl.h; sourceTree = "<group>"; };
+		B3NRF /* blake3_neon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blake3_neon.c; sourceTree = "<group>"; };
+		B3PRF /* blake3_portable.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = blake3_portable.c; sourceTree = "<group>"; };
+		B8C0E6D1F2A34B1C9D5E7F01 /* IPtProxyBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPtProxyBridge.h; sourceTree = "<group>"; };
+		B8C0E6D1F2A34B1C9D5E7F02 /* IPtProxyBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPtProxyBridge.m; sourceTree = "<group>"; };
+		BA100439C153DE93585E16DF /* SafetyNumbersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyNumbersView.swift; sourceTree = "<group>"; };
+		BDD14C69BC276E24E7A2750A /* MemoryProtector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security/MemoryProtector.swift; sourceTree = "<group>"; };
+		BHST0RF0000000001 /* BlobHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/BlobHost.swift; sourceTree = "<group>"; };
+		BIOAU00F2A34B1C9D /* BiometricAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthService.swift; sourceTree = "<group>"; };
+		BRCL0RF0000000001 /* BlobRelayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/BlobRelayClient.swift; sourceTree = "<group>"; };
+		BRPN0RF0000000001 /* BlobRelayPinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/BlobRelayPinning.swift; sourceTree = "<group>"; };
+		C9267B006C1142D6 /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Manrope-ExtraBold.ttf"; path = "LadonApp/Fonts/Manrope-ExtraBold.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F01 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Manrope-Regular.ttf"; path = "LadonApp/Fonts/Manrope-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F02 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Manrope-Medium.ttf"; path = "LadonApp/Fonts/Manrope-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F03 /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Manrope-SemiBold.ttf"; path = "LadonApp/Fonts/Manrope-SemiBold.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F04 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Manrope-Bold.ttf"; path = "LadonApp/Fonts/Manrope-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F05 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Regular.ttf"; path = "LadonApp/Fonts/JetBrainsMono-Regular.ttf"; sourceTree = SOURCE_ROOT; };
+		FADE000000000F06 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "JetBrainsMono-Medium.ttf"; path = "LadonApp/Fonts/JetBrainsMono-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		CC2691CE04E54B69A26FB69F /* TorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorController.swift; sourceTree = "<group>"; };
+		CERTPIN00FILE0001 /* CertificatePinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CertificatePinning.swift; path = Security/CertificatePinning.swift; sourceTree = "<group>"; };
+		DC9C6FC36B963F102FFBD5BF /* SecureLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecureLogger.swift; path = Security/SecureLogger.swift; sourceTree = "<group>"; };
+		E56B8E106B0E4C73A7B11B0D /* TorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorSettingsView.swift; sourceTree = "<group>"; };
+		E961C74053FB1869B9D2CE8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ENCDB00F2A34B1C9D5E7F00 /* EncryptedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EncryptedDatabase.swift; path = Security/EncryptedDatabase.swift; sourceTree = "<group>"; };
+		EXBOOT0RF0000000001 /* exits-bootstrap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "exits-bootstrap.json"; path = "LadonApp/Resources/exits-bootstrap.json"; sourceTree = SOURCE_ROOT; };
+		FDFACBACFBDD48BFAD0AD6CD /* IPtProxy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = IPtProxy.xcframework; path = LadonApp/Frameworks/IPtProxy.xcframework; sourceTree = SOURCE_ROOT; };
+		FTFL0RF0000000001 /* FeatureFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities/FeatureFlags.swift; sourceTree = "<group>"; };
+		INACT00F2A34B1C9D /* InactivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityManager.swift; sourceTree = "<group>"; };
+		INAWV00F2A34B1C9D /* InactivityWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InactivityWarningView.swift; sourceTree = "<group>"; };
+		INMEM000 /* InMemoryMessageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryMessageStore.swift; sourceTree = "<group>"; };
+		LANG0RF0000000001 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities/LanguageManager.swift; sourceTree = "<group>"; };
+		LCXS0RF0000000001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		PRIV0RF0000000001 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		IPXS0RF0000000001 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		LINT0RF0000000001 /* LogoIntroAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/LogoIntroAnimation.swift; sourceTree = "<group>"; };
+		LTHM0RF0000000001 /* LadonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities/LadonTheme.swift; sourceTree = "<group>"; };
+		LV2BLK3RF /* Blake3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blake3.swift; sourceTree = "<group>"; };
+		LV2BNDRF /* BundleV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleV2.swift; sourceTree = "<group>"; };
+		LV2CLRF /* LadonV2CrossLangVectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadonV2CrossLangVectors.swift; sourceTree = "<group>"; };
+		LV2CONSRF /* ProtocolConstantsV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConstantsV2.swift; sourceTree = "<group>"; };
+		LV2HKMRF /* HKEMV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKEMV2.swift; sourceTree = "<group>"; };
+		A2SRQRF /* SealedRequestV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealedRequestV2.swift; sourceTree = "<group>"; };
+		LV2HSGRF /* HSigV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSigV2.swift; sourceTree = "<group>"; };
+		LV2IDSRF /* IdentifiersV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiersV2.swift; sourceTree = "<group>"; };
+		LV2INRF /* InnerEnvelopeV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerEnvelopeV2.swift; sourceTree = "<group>"; };
+		LV2STORF /* IdentityStoreV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentityStoreV2.swift; sourceTree = "<group>"; };
+		LV2STRF /* LadonV2SelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadonV2SelfTest.swift; sourceTree = "<group>"; };
+		LV2DKYRF /* DeliveryKeyV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryKeyV2.swift; sourceTree = "<group>"; };
+		LV2WUTRF /* WireUtilV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireUtilV2.swift; sourceTree = "<group>"; };
+		MSGAP00F2A34B1C9D /* MessageAuthenticityProof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAuthenticityProof.swift; sourceTree = "<group>"; };
+		POSTQSRF0000000000000001 /* PostQuantumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuantumService.swift; sourceTree = "<group>"; };
+		SACH0RF0000000001 /* SenderAttachmentCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/SenderAttachmentCache.swift; sourceTree = "<group>"; };
+		SAFNM00F2A34B1C9D /* SafetyNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SafetyNumbers.swift; path = Security/SafetyNumbers.swift; sourceTree = "<group>"; };
+		SCDET00F2A34B1C9D /* ScreenshotDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScreenshotDetector.swift; path = Security/ScreenshotDetector.swift; sourceTree = "<group>"; };
+		SECEX00F2A34B1C9D /* SecurityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecurityExtensions.swift; path = Security/SecurityExtensions.swift; sourceTree = "<group>"; };
+		SECUT00F2A34B1C9D /* SecurityUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecurityUtils.swift; path = Security/SecurityUtils.swift; sourceTree = "<group>"; };
+		SFTSTRF01F2A34B1C /* SecurityFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecurityFeatureTests.swift; path = Security/SecurityFeatureTests.swift; sourceTree = "<group>"; };
+		SQLC000000000001 /* SQLCipher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SQLCipher.xcframework; path = LadonApp/Frameworks/SQLCipher.xcframework; sourceTree = SOURCE_ROOT; };
+		SV2BSRF /* V2BootstrapSelfTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2BootstrapSelfTest.swift; sourceTree = "<group>"; };
+		SV2DCRF /* DirectoryClientV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryClientV2.swift; sourceTree = "<group>"; };
+		SV2ECRF /* EnqueueClientV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueueClientV2.swift; sourceTree = "<group>"; };
+		SV2ERRF /* ExitRegistryV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitRegistryV2.swift; sourceTree = "<group>"; };
+		SV2FCRF /* FetchClientV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchClientV2.swift; sourceTree = "<group>"; };
+		SV2CSRF /* ClockSyncV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSyncV2.swift; sourceTree = "<group>"; };
+		A2LNSRF /* LaneSchedulerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaneSchedulerV2.swift; sourceTree = "<group>"; };
+		A2STRRF /* SealedTransportV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealedTransportV2.swift; sourceTree = "<group>"; };
+		SV2PRRF /* PushRegistrationClientV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushRegistrationClientV2.swift; sourceTree = "<group>"; };
+		SV2PSRF /* PeerStoreV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerStoreV2.swift; sourceTree = "<group>"; };
+		SV2PKRF /* PrekeyStoreV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrekeyStoreV2.swift; sourceTree = "<group>"; };
+		SV2PCRF /* PairingCodeV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingCodeV4.swift; sourceTree = "<group>"; };
+		SV2RCRF /* RelayClientV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayClientV2.swift; sourceTree = "<group>"; };
+		SV2SMRF /* V2SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V2SessionManager.swift; sourceTree = "<group>"; };
+		SV2DKSRF /* DeliveryKeyStoreV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryKeyStoreV2.swift; sourceTree = "<group>"; };
+		SV2BLKRF /* BlockingV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingV2.swift; sourceTree = "<group>"; };
+		VSAN0RF0000000001 /* VideoSanitizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attachments/VideoSanitizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1AFRM001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F7E4435EC994A65A83EBEBF /* tor.xcframework in Frameworks */,
+				5AC61F1A13A14B9EBAC34AC8 /* IPtProxy.xcframework in Frameworks */,
+				4641AF73AAC46A88C5AA7F2D /* liboqs.a in Frameworks */,
+				SQLC000000000002 /* SQLCipher.xcframework in Frameworks */,
+				ARG2BF02F2A34B1C9D /* LadonArgon2 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AGRP001 /* LadonApp */ = {
+			isa = PBXGroup;
+			children = (
+				LTHM0RF0000000001 /* LadonTheme.swift */,
+				FTFL0RF0000000001 /* FeatureFlags.swift */,
+				ATTY0RF0000000001 /* AttachmentTypes.swift */,
+				ATLI0RF0000000001 /* AttachmentLimits.swift */,
+				ATIS0RF0000000001 /* ImageSanitizer.swift */,
+				ATTG0RF0000000001 /* ThumbnailGenerator.swift */,
+				ATBP0RF0000000001 /* BucketPadding.swift */,
+				ATPR0RF0000000001 /* AttachmentPreparation.swift */,
+				AKDV0RF0000000001 /* AttachmentKeyDerivation.swift */,
+				AMRK0RF0000000001 /* AttachmentMerkle.swift */,
+				ACCP0RF0000000001 /* AttachmentChunkCipher.swift */,
+				ASLT0RF0000000001 /* AttachmentSlotCipher.swift */,
+				ASWP0RF0000000001 /* AttachmentSeedWrap.swift */,
+				ASLR0RF0000000001 /* AttachmentSealer.swift */,
+				AUSL0RF0000000001 /* AttachmentUnsealer.swift */,
+				ACST0RF0000000001 /* AttachmentCryptoSelfTest.swift */,
+				BRPN0RF0000000001 /* BlobRelayPinning.swift */,
+				BRCL0RF0000000001 /* BlobRelayClient.swift */,
+				BHST0RF0000000001 /* BlobHost.swift */,
+				AUPL0RF0000000001 /* AttachmentUploader.swift */,
+				ADNL0RF0000000001 /* AttachmentDownloader.swift */,
+				VSAN0RF0000000001 /* VideoSanitizer.swift */,
+				ASAN0RF0000000001 /* AudioSanitizer.swift */,
+				ARST0RF0000000001 /* AttachmentRoundtripSelfTest.swift */,
+				AMPL0RF0000000001 /* AttachmentMessagePayload.swift */,
+				AMPL0RF0000000002 /* AttachmentMessagePayloadV2.swift */,
+				ASND0RF0000000001 /* AttachmentSendService.swift */,
+				SACH0RF0000000001 /* SenderAttachmentCache.swift */,
+				ARCV0RF0000000001 /* AttachmentReceiveService.swift */,
+				ABUB0RF0000000001 /* AttachmentBubbleView.swift */,
+				AVRO0RF0000000001 /* VoiceRecorderOverlay.swift */,
+				LINT0RF0000000001 /* LogoIntroAnimation.swift */,
+				61CB659D0D98067285302124 /* QuickWinsPhase1.swift */,
+				0DE34872C29F48EF7592856C /* Phase4Hardware.swift */,
+				9E4EB0A3F0D19B5C5A6CC146 /* Phase2Platform.swift */,
+				BDD14C69BC276E24E7A2750A /* MemoryProtector.swift */,
+				CERTPIN00FILE0001 /* CertificatePinning.swift */,
+				64C9DE52DEEAE8F2754B23AD /* JailbreakDetector.swift */,
+				1A000000 /* LadonApp.swift */,
+				1A000050 /* Info.plist */,
+				AA0SEC00F2A34B1C9D5E7F00 /* SecureStorage.swift */,
+				ENCDB00F2A34B1C9D5E7F00 /* EncryptedDatabase.swift */,
+				DC9C6FC36B963F102FFBD5BF /* SecureLogger.swift */,
+				3F0FAC16C166853CF3F0725B /* ScreenshotPreventionView.swift */,
+				SAFNM00F2A34B1C9D /* SafetyNumbers.swift */,
+				SECUT00F2A34B1C9D /* SecurityUtils.swift */,
+				SECEX00F2A34B1C9D /* SecurityExtensions.swift */,
+				SCDET00F2A34B1C9D /* ScreenshotDetector.swift */,
+				SFTSTRF01F2A34B1C /* SecurityFeatureTests.swift */,
+				ASSET0RF0000000001 /* Assets.xcassets */,
+				LCXS0RF0000000001 /* Localizable.xcstrings */,
+				PRIV0RF0000000001 /* PrivacyInfo.xcprivacy */,
+				IPXS0RF0000000001 /* InfoPlist.xcstrings */,
+				LANG0RF0000000001 /* LanguageManager.swift */,
+				1AGRP002 /* Views */,
+				1AGRP003 /* Models */,
+				1AGRP004 /* Services */,
+				1AGRP005 /* Crypto */,
+				5137C35A542146F191FF9984 /* tor.xcframework */,
+				FDFACBACFBDD48BFAD0AD6CD /* IPtProxy.xcframework */,
+				SQLC000000000001 /* SQLCipher.xcframework */,
+				346DC9CC2770D3FC5C187E12 /* Ladon.storekit */,
+			);
+			path = LadonApp;
+			sourceTree = "<group>";
+		};
+		1AGRP002 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C9267B006C1142D6 /* Manrope-ExtraBold.ttf */,
+				FADE000000000F01 /* Manrope-Regular.ttf */,
+				FADE000000000F02 /* Manrope-Medium.ttf */,
+				FADE000000000F03 /* Manrope-SemiBold.ttf */,
+				FADE000000000F04 /* Manrope-Bold.ttf */,
+				FADE000000000F05 /* JetBrainsMono-Regular.ttf */,
+				FADE000000000F06 /* JetBrainsMono-Medium.ttf */,
+				INAWV00F2A34B1C9D /* InactivityWarningView.swift */,
+				E56B8E106B0E4C73A7B11B0D /* TorSettingsView.swift */,
+				1A000002 /* ContentView.swift */,
+				1A000099 /* SettingsView.swift */,
+				SECV0RF0000000001 /* SecurityView.swift */,
+				1A000010 /* ConversationListView.swift */,
+				1A000012 /* ChatView.swift */,
+				BA100439C153DE93585E16DF /* SafetyNumbersView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1AGRP003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A000020 /* Message.swift */,
+				1A000022 /* Conversation.swift */,
+				1A000024 /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1AGRP004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BIOAU00F2A34B1C9D /* BiometricAuthService.swift */,
+				INACT00F2A34B1C9D /* InactivityManager.swift */,
+				8491B89BA00D49D0B18951D4 /* SilentPushHandler.swift */,
+				INMEM000 /* InMemoryMessageStore.swift */,
+				1A000033 /* TorManager.swift */,
+				CC2691CE04E54B69A26FB69F /* TorController.swift */,
+				SV2GRP001 /* V2 */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1AGRP005 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				MSGAP00F2A34B1C9D /* MessageAuthenticityProof.swift */,
+				POSTQSRF0000000000000001 /* PostQuantumService.swift */,
+				85159215784DE245A61CDCC5 /* liboqs.a */,
+				8EF7BB39DE1A8C650AC613BC /* OQSWrapper.m */,
+				1A000040 /* KeyManager.swift */,
+				B8C0E6D1F2A34B1C9D5E7F01 /* IPtProxyBridge.h */,
+				B8C0E6D1F2A34B1C9D5E7F02 /* IPtProxyBridge.m */,
+				LV2GRP001 /* V2 */,
+				B3GRP001 /* blake3 */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		1AGRP999 = {
+			isa = PBXGroup;
+			children = (
+				1AGRP001 /* LadonApp */,
+				1APRD001 /* Products */,
+				BABECA44885AD380E3EB9573 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1APRD001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AAPP001 /* Ladon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F296AA329169242EBD7A4F8 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E961C74053FB1869B9D2CE8F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B3GRP001 /* blake3 */ = {
+			isa = PBXGroup;
+			children = (
+				B3HRF /* blake3.h */,
+				B3IRF /* blake3_impl.h */,
+				B3CRF /* blake3.c */,
+				B3DRF /* blake3_dispatch.c */,
+				B3PRF /* blake3_portable.c */,
+				B3NRF /* blake3_neon.c */,
+			);
+			path = blake3;
+			sourceTree = "<group>";
+		};
+		BABECA44885AD380E3EB9573 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F296AA329169242EBD7A4F8 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		LV2GRP001 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				LV2BLK3RF /* Blake3.swift */,
+				LV2CONSRF /* ProtocolConstantsV2.swift */,
+				LV2IDSRF /* IdentifiersV2.swift */,
+				LV2WUTRF /* WireUtilV2.swift */,
+				LV2HSGRF /* HSigV2.swift */,
+				LV2HKMRF /* HKEMV2.swift */,
+				A2SRQRF /* SealedRequestV2.swift */,
+				LV2STORF /* IdentityStoreV2.swift */,
+				LV2DKYRF /* DeliveryKeyV2.swift */,
+				LV2BNDRF /* BundleV2.swift */,
+				LV2INRF /* InnerEnvelopeV2.swift */,
+				LV2STRF /* LadonV2SelfTest.swift */,
+				LV2CLRF /* LadonV2CrossLangVectors.swift */,
+			);
+			path = V2;
+			sourceTree = "<group>";
+		};
+		SV2GRP001 /* V2 */ = {
+			isa = PBXGroup;
+			children = (
+				SV2ERRF /* ExitRegistryV2.swift */,
+				SV2DKSRF /* DeliveryKeyStoreV2.swift */,
+				SV2BLKRF /* BlockingV2.swift */,
+				SV2DCRF /* DirectoryClientV2.swift */,
+				SV2ECRF /* EnqueueClientV2.swift */,
+				SV2FCRF /* FetchClientV2.swift */,
+				SV2RCRF /* RelayClientV2.swift */,
+				SV2SMRF /* V2SessionManager.swift */,
+				SV2PSRF /* PeerStoreV2.swift */,
+				SV2PKRF /* PrekeyStoreV2.swift */,
+				SV2PCRF /* PairingCodeV4.swift */,
+				SV2BSRF /* V2BootstrapSelfTest.swift */,
+				SV2CSRF /* ClockSyncV2.swift */,
+				A2LNSRF /* LaneSchedulerV2.swift */,
+				A2STRRF /* SealedTransportV2.swift */,
+				SV2PRRF /* PushRegistrationClientV2.swift */,
+			);
+			path = V2;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1ATGT001 /* Ladon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1ABCL001 /* Build configuration list for PBXNativeTarget "Ladon" */;
+			buildPhases = (
+				1ASRC001 /* Sources */,
+				1AFRM001 /* Frameworks */,
+				1ARES001 /* Resources */,
+				B8C0E6D1F2A34B1C9D5E7F11 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ladon;
+			packageProductDependencies = (
+				ARG2PD01F2A34B1C9D /* LadonArgon2 */,
+			);
+			productName = Ladon;
+			productReference = 1AAPP001 /* Ladon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1APRJ001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					1ATGT001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1ABCL002 /* Build configuration list for PBXProject "LadonApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				de,
+				Base,
+			);
+			mainGroup = 1AGRP999;
+			packageReferences = (
+				ARG2LP01F2A34B1C9D /* XCLocalSwiftPackageReference "Packages/LadonArgon2" */,
+			);
+			productRefGroup = 1APRD001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1ATGT001 /* Ladon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1ARES001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25B08229CE1B12A5 /* Manrope-ExtraBold.ttf in Resources */,
+				FADE000000000B01 /* Manrope-Regular.ttf in Resources */,
+				FADE000000000B02 /* Manrope-Medium.ttf in Resources */,
+				FADE000000000B03 /* Manrope-SemiBold.ttf in Resources */,
+				FADE000000000B04 /* Manrope-Bold.ttf in Resources */,
+				FADE000000000B05 /* JetBrainsMono-Regular.ttf in Resources */,
+				FADE000000000B06 /* JetBrainsMono-Medium.ttf in Resources */,
+				ASSET0BF0000000001 /* Assets.xcassets in Resources */,
+				LCXS0BF0000000001 /* Localizable.xcstrings in Resources */,
+				PRIV0BF0000000001 /* PrivacyInfo.xcprivacy in Resources */,
+				IPXS0BF0000000001 /* InfoPlist.xcstrings in Resources */,
+				EXBOOT0BF0000000001 /* exits-bootstrap.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1ASRC001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				LTHM0BF0000000001 /* LadonTheme.swift in Sources */,
+				FTFL0BF0000000001 /* FeatureFlags.swift in Sources */,
+				ATTY0BF0000000001 /* AttachmentTypes.swift in Sources */,
+				ATLI0BF0000000001 /* AttachmentLimits.swift in Sources */,
+				ATIS0BF0000000001 /* ImageSanitizer.swift in Sources */,
+				ATTG0BF0000000001 /* ThumbnailGenerator.swift in Sources */,
+				ATBP0BF0000000001 /* BucketPadding.swift in Sources */,
+				ATPR0BF0000000001 /* AttachmentPreparation.swift in Sources */,
+				AKDV0BF0000000001 /* AttachmentKeyDerivation.swift in Sources */,
+				AMRK0BF0000000001 /* AttachmentMerkle.swift in Sources */,
+				ACCP0BF0000000001 /* AttachmentChunkCipher.swift in Sources */,
+				ASLT0BF0000000001 /* AttachmentSlotCipher.swift in Sources */,
+				ASWP0BF0000000001 /* AttachmentSeedWrap.swift in Sources */,
+				ASLR0BF0000000001 /* AttachmentSealer.swift in Sources */,
+				AUSL0BF0000000001 /* AttachmentUnsealer.swift in Sources */,
+				ACST0BF0000000001 /* AttachmentCryptoSelfTest.swift in Sources */,
+				BRPN0BF0000000001 /* BlobRelayPinning.swift in Sources */,
+				BRCL0BF0000000001 /* BlobRelayClient.swift in Sources */,
+				BHST0BF0000000001 /* BlobHost.swift in Sources */,
+				AUPL0BF0000000001 /* AttachmentUploader.swift in Sources */,
+				ADNL0BF0000000001 /* AttachmentDownloader.swift in Sources */,
+				VSAN0BF0000000001 /* VideoSanitizer.swift in Sources */,
+				ASAN0BF0000000001 /* AudioSanitizer.swift in Sources */,
+				ARST0BF0000000001 /* AttachmentRoundtripSelfTest.swift in Sources */,
+				AMPL0BF0000000001 /* AttachmentMessagePayload.swift in Sources */,
+				AMPL0BF0000000002 /* AttachmentMessagePayloadV2.swift in Sources */,
+				ASND0BF0000000001 /* AttachmentSendService.swift in Sources */,
+				SACH0BF0000000001 /* SenderAttachmentCache.swift in Sources */,
+				ARCV0BF0000000001 /* AttachmentReceiveService.swift in Sources */,
+				ABUB0BF0000000001 /* AttachmentBubbleView.swift in Sources */,
+				AVRO0BF0000000001 /* VoiceRecorderOverlay.swift in Sources */,
+				LINT0BF0000000001 /* LogoIntroAnimation.swift in Sources */,
+				6D7B05AAF270801D0DEF8E02 /* QuickWinsPhase1.swift in Sources */,
+				6A54484A0CD084C5D0F88A28 /* Phase4Hardware.swift in Sources */,
+				01370597600D596CECECDCA4 /* Phase2Platform.swift in Sources */,
+				CFB6A12752126FC469DEE233 /* MemoryProtector.swift in Sources */,
+				CERTPIN00BUILD001 /* CertificatePinning.swift in Sources */,
+				4A040C47B5D10B2E32FDD0D6 /* JailbreakDetector.swift in Sources */,
+				541E8DAABDBD4890B12FFBFD /* SilentPushHandler.swift in Sources */,
+				1A000001 /* LadonApp.swift in Sources */,
+				03EC3E242F2E2759003D5D41 /* BuildFile in Sources */,
+				1A000003 /* ContentView.swift in Sources */,
+				1A000004 /* SettingsView.swift in Sources */,
+				SECV0BF0000000001 /* SecurityView.swift in Sources */,
+				1A000011 /* ConversationListView.swift in Sources */,
+				1A000013 /* ChatView.swift in Sources */,
+				1A000021 /* Message.swift in Sources */,
+				1A000023 /* Conversation.swift in Sources */,
+				1A000025 /* Contact.swift in Sources */,
+				INMEM001 /* InMemoryMessageStore.swift in Sources */,
+				1A000032 /* TorManager.swift in Sources */,
+				F649902B98174A8DB4D756B6 /* TorController.swift in Sources */,
+				1A000041 /* KeyManager.swift in Sources */,
+				POSTQSBF0000000000000001 /* PostQuantumService.swift in Sources */,
+				C88EA4299B04961C3B8DF21E /* OQSWrapper.m in Sources */,
+				B8C0E6D1F2A34B1C9D5E7F03 /* IPtProxyBridge.m in Sources */,
+				A805B03131914401836A6627 /* TorSettingsView.swift in Sources */,
+				AA0SEC01F2A34B1C9D5E7F01 /* SecureStorage.swift in Sources */,
+				ENCDB01F2A34B1C9D5E7F01 /* EncryptedDatabase.swift in Sources */,
+				36A32725FC58231793F8A697 /* SecureLogger.swift in Sources */,
+				742C9833F5DA17482921C6CB /* ScreenshotPreventionView.swift in Sources */,
+				BIOAU01F2A34B1C9D /* BiometricAuthService.swift in Sources */,
+				INACT01F2A34B1C9D /* InactivityManager.swift in Sources */,
+				MSGAP01F2A34B1C9D /* MessageAuthenticityProof.swift in Sources */,
+				SAFNM01F2A34B1C9D /* SafetyNumbers.swift in Sources */,
+				SECUT01F2A34B1C9D /* SecurityUtils.swift in Sources */,
+				SECEX01F2A34B1C9D /* SecurityExtensions.swift in Sources */,
+				SCDET01F2A34B1C9D /* ScreenshotDetector.swift in Sources */,
+				INAWV01F2A34B1C9D /* InactivityWarningView.swift in Sources */,
+				2A0EF85875ED418C028DCB65 /* SafetyNumbersView.swift in Sources */,
+				SFTSTBF01F2A34B1C /* SecurityFeatureTests.swift in Sources */,
+				LANG0BF0000000001 /* LanguageManager.swift in Sources */,
+				LV2BLK3BF /* Blake3.swift in Sources */,
+				LV2CONSBF /* ProtocolConstantsV2.swift in Sources */,
+				LV2IDSBF /* IdentifiersV2.swift in Sources */,
+				LV2WUTBF /* WireUtilV2.swift in Sources */,
+				LV2HSGBF /* HSigV2.swift in Sources */,
+				LV2HKMBF /* HKEMV2.swift in Sources */,
+				A2SRQBF /* SealedRequestV2.swift in Sources */,
+				LV2STOBF /* IdentityStoreV2.swift in Sources */,
+				LV2DKYBF /* DeliveryKeyV2.swift in Sources */,
+				LV2BNDBF /* BundleV2.swift in Sources */,
+				LV2STBF /* LadonV2SelfTest.swift in Sources */,
+				SV2ERBF /* ExitRegistryV2.swift in Sources */,
+				SV2DKSBF /* DeliveryKeyStoreV2.swift in Sources */,
+				SV2BLKBF /* BlockingV2.swift in Sources */,
+				SV2DCBF /* DirectoryClientV2.swift in Sources */,
+				SV2ECBF /* EnqueueClientV2.swift in Sources */,
+				SV2FCBF /* FetchClientV2.swift in Sources */,
+				LV2INBF /* InnerEnvelopeV2.swift in Sources */,
+				SV2RCBF /* RelayClientV2.swift in Sources */,
+				SV2SMBF /* V2SessionManager.swift in Sources */,
+				SV2PSBF /* PeerStoreV2.swift in Sources */,
+				SV2PKBF /* PrekeyStoreV2.swift in Sources */,
+				SV2PCBF /* PairingCodeV4.swift in Sources */,
+				SV2BSBF /* V2BootstrapSelfTest.swift in Sources */,
+				LV2CLBF /* LadonV2CrossLangVectors.swift in Sources */,
+				SV2CSBF /* ClockSyncV2.swift in Sources */,
+				A2LNSBF /* LaneSchedulerV2.swift in Sources */,
+				A2STRBF /* SealedTransportV2.swift in Sources */,
+				SV2PRBF /* PushRegistrationClientV2.swift in Sources */,
+				B3CBF /* blake3.c in Sources */,
+				B3DBF /* blake3_dispatch.c in Sources */,
+				B3PBF /* blake3_portable.c in Sources */,
+				B3NBF /* blake3_neon.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1AXBC001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = LadonApp/Ladon.Debug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = M6F4LU2CGM;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64/Headers",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64-simulator/Headers",
+				);
+				INFOPLIST_FILE = LadonApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Ladon;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-framework",
+					tor,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.ladon.messenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "LadonApp/Ladon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1AXBC002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = LadonApp/Ladon.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 12;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = M6F4LU2CGM;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+				);
+				INFOPLIST_FILE = LadonApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Ladon;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-framework",
+					tor,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.ladon.messenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_SWIFT_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "LadonApp/Ladon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1AXBC003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64/Headers",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64-simulator/Headers",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-framework",
+					tor,
+				);
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "LadonApp/Ladon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1AXBC004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64",
+					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64/Headers",
+					"$(SRCROOT)/LadonApp/Frameworks/SQLCipher.xcframework/ios-arm64-simulator/Headers",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/LadonApp/Crypto",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-framework",
+					tor,
+				);
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_SWIFT_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "LadonApp/Ladon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1ABCL001 /* Build configuration list for PBXNativeTarget "Ladon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AXBC001 /* Debug */,
+				1AXBC002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1ABCL002 /* Build configuration list for PBXProject "LadonApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AXBC003 /* Debug */,
+				1AXBC004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		ARG2LP01F2A34B1C9D /* XCLocalSwiftPackageReference "Packages/LadonArgon2" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/LadonArgon2;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ARG2PD01F2A34B1C9D /* LadonArgon2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ARG2LP01F2A34B1C9D /* XCLocalSwiftPackageReference "Packages/LadonArgon2" */;
+			productName = LadonArgon2;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1APRJ001 /* Project object */;
+}

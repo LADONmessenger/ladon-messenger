@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>LADON</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>app.ladon.messenger</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>12</string>
+	<key>LadonTestBuild</key>
+	<string>$(LADON_TEST_BUILD)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<false/>
+	<key>MinimumOSVersion</key>
+	<string>17.0</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>entry-ch.ladon.app</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.3</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>entry-fi.ladon.app</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.3</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>exit-is1.ladon.app</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.3</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>exit-is2.ladon.app</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.3</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+			<key>exit-pa1.ladon.app</key>
+			<dict>
+				<key>NSExceptionMinimumTLSVersion</key>
+				<string>TLSv1.3</string>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>LADON messenger uses the camera to scan QR codes for secure key exchange.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>LADON messenger uses Face ID to authenticate you.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LADON messenger uses the microphone to record voice messages.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>LADON messenger can save received media to your photo library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>LADON messenger accesses your photo library so you can attach photos and videos to messages.</string>
+	<key>NSSupportsLiveActivities</key>
+	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Manrope-ExtraBold.ttf</string>
+		<string>Manrope-Regular.ttf</string>
+		<string>Manrope-Medium.ttf</string>
+		<string>Manrope-SemiBold.ttf</string>
+		<string>Manrope-Bold.ttf</string>
+		<string>JetBrainsMono-Regular.ttf</string>
+		<string>JetBrainsMono-Medium.ttf</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<false/>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+</dict>
+</plist>

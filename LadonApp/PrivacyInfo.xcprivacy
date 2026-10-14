@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Kein Tracking: Die App verknuepft keine Daten mit Dritt-Datenbestaenden
+	     und bindet keine Analytics-, Werbe- oder Crash-Reporting-Bibliothek ein. -->
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<!-- Keine Datenerhebung: Es gibt kein Konto, keine Telemetrie und keine
+	     Nutzerkennung. Nachrichten liegen ausschliesslich Ende-zu-Ende
+	     verschluesselt vor; die Relays sehen nur Chiffrat. -->
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<!-- UserDefaults: nur eigene App-Einstellungen (Sprache, Ansichtszustand). -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+		<!-- ProcessInfo.systemUptime als monotone Uhr in InactivityManager:
+		     misst die verstrichene Zeit bis zur automatischen Sperre, damit
+		     ein verstelltes Datum die Sperre nicht aushebeln kann. -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>35F9.1</string>
+			</array>
+		</dict>
+		<!-- P8-AUDIT8-IOS-28: stat/fstat/lstat werden aus dem eingebundenen
+		     SQLCipher (libsqlite3.a), tor.xcframework und IPtProxy.xcframework
+		     importiert (nm -m auf dem Release-Binary vom 13.10.2026). Sie lesen
+		     Zeitstempel/Groesse von Dateien im eigenen App-Container
+		     (Datenbank, Tor-Zustand). -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>C617.1</string>
+			</array>
+		</dict>
+		<!-- P8-AUDIT8-IOS-28: statfs/fstatfs (SQLCipher) bzw. statvfs (tor)
+		     pruefen den freien Platz vor dem Schreiben der eigenen Dateien. -->
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>E174.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

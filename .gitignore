@@ -1,0 +1,13 @@
+.DS_Store
+
+# Xcode
+xcuserdata/
+DerivedData/
+build/
+*.xcuserstate
+
+# Downloaded at build time, see LadonApp/Frameworks/TOR_FRAMEWORK.lock (~140 MB)
+LadonApp/Frameworks/tor.xcframework/
+
+# Rust
+target/

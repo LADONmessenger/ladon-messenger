@@ -1,0 +1,33 @@
+# tor.xcframework — pinned version
+#
+# LadonApp/Frameworks/tor.xcframework is not in git (.gitignore:124, ~140 MB).
+# This file records exactly which build the app needs and how it was verified.
+# Restore: download the asset below, check sha256_zip, unzip into
+# LadonApp/Frameworks/ (ditto keeps the symlinks), then check sha256_ios_lib
+# and that `strings -a <ios lib> | grep "on Tor 0.4"` shows git_revision.
+
+tor_version        = 0.4.9.14
+release_date       = 2026-10-07
+git_revision       = 8fe2745aee2c3511
+upstream_tag       = tor-0.4.9.14 -> 8fe2745aee2c35116ff1081f19b2952418b43069
+                     (https://gitlab.torproject.org/tpo/core/tor.git)
+
+source             = https://github.com/iCepa/Tor.framework/releases/tag/v409.14.1
+asset              = tor.xcframework.zip
+sha256_zip         = 823d98fcafd8eba089f31b32989ad70e15a0e8a1b5709bc0d5941fb09ef1b625
+sha256_ios_lib     = a9720e7b9645438e9b96fa4d0785849fb54de3479257b3635dbd9dcbae55fe85
+                     (ios-arm64/tor.framework/Versions/A/tor, static library)
+bundled            = libevent 2.1.13, OpenSSL 3.6.5, liblzma 5.8.4, zlib 1.2.12
+
+# Verified on 2026-10-13
+# - tor-0.4.9.14.tar.gz.sha256sum.asc: good signatures by David Goulet
+#   (B74417EDDF22AC9F9E90F49142E86A2A11F48D36) and Alexander Færøy
+#   (514102454D0A87DB0767A1EBBE6A0531C18A9179), both on the list at
+#   https://support.torproject.org/little-t-tor/verify-little-t-tor/
+# - git_revision in the binary == commit of the official tag above
+# - the six functions declared in Ladon-Bridging-Header.h match
+#   feature/api/tor_api.h and are exported (nm -gU)
+# - 0.4.9.14 fixes bug 41375 (memory corruption on the second change of a
+#   pluggable-transport configuration by SETCONF — the app's unpark/rebind)
+#
+# Previous: 0.4.8.22 (git 5c000c65a502a61c), until 2026-10-13.

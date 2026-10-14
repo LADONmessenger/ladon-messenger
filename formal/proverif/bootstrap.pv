@@ -1,0 +1,127 @@
+(* LADON messenger — formal model 1: pairing code + one-time-prekey bootstrap.
+   ProVerif 2.05. Mirrors the Swift implementation on feat/otpk-pq-ratchet:
+     PairingCodeV3.swift          code = identity + one-time prekey (OTPK)
+     RelayClientV2.swift          bootstrapInitiator / bootstrapResponder /
+                                  deriveBootRootKey / deriveInitialChainKey /
+                                  deriveMessageKey, frame header = AEAD AD
+     InnerEnvelopeV2.swift        HSig signature over
+                                  version | senderHsigPk | timestamp | len | body
+                                  (the recipient is NOT in the signed range)
+   Scenario lines are marked (*@<name> ... @*) and switched on by run.sh.
+
+   Abstractions (stated, not hidden):
+   - Primitives are perfect (symbolic model): X25519 as Diffie-Hellman over a
+     group, ML-KEM-768 as an IND-CCA KEM, HKDF as a random oracle, ChaCha20-
+     Poly1305 as an authenticated cipher, HSig (Ed25519 + ML-DSA-65) as one
+     unforgeable signature. "Hybrid" is checked by scenarios that hand the
+     attacker all X25519 or all ML-KEM secrets (see run.sh).
+   - The HKEM layer that encrypts the inner envelope to the recipient is left
+     out: the attacker sees sender identity, signature and frame. This only
+     gives the attacker MORE power, so what is proven holds a fortiori.
+   - The code reaches the honest scanner unaltered (in-person QR, oob), and is
+     also handed to the attacker (a photographed code).
+   - Timestamps, padding, message numbers beyond the first are omitted. *)
+
+free c: channel.                       (* network, relays: attacker-controlled *)
+free oob: channel [private].           (* the QR code shown in person *)
+
+type key.
+type G.
+type exponent.
+type kemsk.
+type kempk.
+type sskey.
+type spkey.
+
+(* X25519 *)
+const g: G [data].
+fun exp(G, exponent): G.
+equation forall x: exponent, y: exponent; exp(exp(g, x), y) = exp(exp(g, y), x).
+
+(* ML-KEM-768: ct and shared secret from the recipient pk and fresh randomness *)
+fun kempub(kemsk): kempk.
+fun kemct(kempk, key): bitstring.
+fun kemss(kempk, key): key.
+reduc forall sk: kemsk, r: key; kemdec(sk, kemct(kempub(sk), r)) = kemss(kempub(sk), r).
+
+(* HSig *)
+fun spk(sskey): spkey.
+fun sign(sskey, bitstring): bitstring.
+reduc forall k: sskey, m: bitstring; verify(spk(k), m, sign(k, m)) = true.
+reduc forall k: sskey, m: bitstring; signedmsg(sign(k, m)) = m.
+
+(* HKDF (random oracles) *)
+fun kdfRoot(G, G, key, bitstring): key.     (* IKM dh1 | dh2 | kemSs, info = transcript *)
+fun kdfChain(key): key.
+fun kdfMsg(key): key.                       (* message key of message 0 *)
+
+(* ChaCha20-Poly1305, header as associated data *)
+fun aead(key, bitstring, bitstring): bitstring.
+reduc forall k: key, ad: bitstring, m: bitstring; adec(k, ad, aead(k, ad, m)) = m.
+
+(* What the honest initiator sends to the honest responder *)
+free secretA: bitstring [private].
+
+event AliceSent(spkey, spkey, bitstring).
+event BobAcceptsFromAlice(spkey, bitstring).
+event BobBoot(bitstring, G).                 (* OTPK id, initiator ephemeral *)
+
+query attacker(secretA).
+(*@lock query oid: bitstring, e1: G, e2: G; event(BobBoot(oid, e1)) && event(BobBoot(oid, e2)) ==> e1 = e2. @*)
+(* Bob accepts m as coming from Alice only if Alice sent m to Bob. *)
+query m: bitstring, pa: spkey, pb: spkey; event(BobAcceptsFromAlice(pb, m)) ==> event(AliceSent(pa, pb, m)).
+
+(* ----- initiator: scans the code, sends the first message ----- *)
+let Alice(skA: sskey) =
+  in(oob, (pkB: spkey, ikBpub: G, oid: bitstring, oX: G, oK: kempk));
+  new ek: exponent;
+  new r: key;
+  new aKemSk: kemsk;                          (* one-time KEM key announced for the next turn *)
+  (*@dh out(c, ek); @*)
+  let ct = kemct(oK, r) in
+  let tr = (spk(skA), pkB, exp(g, ek), ikBpub, oid, oX, oK, ct, kempub(aKemSk)) in
+  let root = kdfRoot(exp(oX, ek), exp(ikBpub, ek), kemss(oK, r), tr) in
+  let mk = kdfMsg(kdfChain(root)) in
+  let hdr = (exp(g, ek), oid, kempub(aKemSk), ct) in
+  let frame = (hdr, aead(mk, hdr, secretA)) in
+  event AliceSent(spk(skA), pkB, secretA);
+  out(c, (spk(skA), frame, sign(skA, (spk(skA), frame)))).
+
+(* ----- responder: one received frame against one OTPK ----- *)
+let BobRecv(skB: sskey, ikB: exponent, pkA: spkey, oid: bitstring, ox: exponent, osk: kemsk, tok: channel) =
+  in(c, (pkS: spkey, frame: bitstring, sig: bitstring));
+  if verify(pkS, (pkS, frame), sig) = true then
+  let ((ekPub: G, =oid, sKemPk: kempk, ct: bitstring), body: bitstring) = frame in
+  let tr = (pkS, spk(skB), ekPub, exp(g, ikB), oid, exp(g, ox), kempub(osk), ct, sKemPk) in
+  let root = kdfRoot(exp(ekPub, ox), exp(ekPub, ikB), kemdec(osk, ct), tr) in
+  let mk = kdfMsg(kdfChain(root)) in
+  let m = adec(mk, (ekPub, oid, sKemPk, ct), body) in
+  (* one-time: the prekey is burned after AEAD success; a second
+     bootstrap finds no token (RelayClientV2.open → consumeOwnPrekey) *)
+  (*@lock in(tok, u: bitstring); @*)
+  event BobBoot(oid, ekPub);
+  if pkS = pkA then event BobAcceptsFromAlice(spk(skB), m).
+
+(* ----- responder: issue a code (shown as QR) ----- *)
+let BobIssue(skB: sskey, ikB: exponent, pkA: spkey) =
+  new oid: bitstring;
+  new ox: exponent;
+  new osk: kemsk;
+  (*@kem out(c, osk); @*)
+  (*@dh out(c, ox); @*)
+  let code = (spk(skB), exp(g, ikB), oid, exp(g, ox), kempub(osk)) in
+  out(c, code);                               (* someone may photograph it *)
+  out(oob, code);                             (* the honest scanner gets it unaltered *)
+  new tok: channel;                           (* private: the prekey, usable once *)
+  ( (*@lock out(tok, oid) | @*) !BobRecv(skB, ikB, pkA, oid, ox, osk, tok) ).
+
+process
+  new skA: sskey;
+  new skB: sskey;
+  new ikB: exponent;
+  out(c, (spk(skA), spk(skB), exp(g, ikB)));
+  (*@dh out(c, ikB); @*)
+  ( (!Alice(skA))
+  | (!BobIssue(skB, ikB, spk(skA)))
+  (*@fs | (phase 1; out(c, (skA, skB, ikB))) @*)
+  )

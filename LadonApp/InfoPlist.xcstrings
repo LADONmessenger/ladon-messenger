@@ -1,0 +1,91 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSCameraUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger uses the camera to scan QR codes for secure key exchange."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger nutzt die Kamera, um QR-Codes für den sicheren Schlüsselaustausch zu scannen."
+          }
+        }
+      }
+    },
+    "NSFaceIDUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger uses Face ID to authenticate you."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger nutzt Face ID, um dich zu authentifizieren."
+          }
+        }
+      }
+    },
+    "NSMicrophoneUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger uses the microphone to record voice messages."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger nutzt das Mikrofon, um Sprachnachrichten aufzunehmen."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger can save received media to your photo library."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger kann empfangene Medien in deiner Fotomediathek speichern."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger accesses your photo library so you can attach photos and videos to messages."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LADON messenger greift auf deine Fotomediathek zu, damit du Fotos und Videos an Nachrichten anhängen kannst."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.1"
+}

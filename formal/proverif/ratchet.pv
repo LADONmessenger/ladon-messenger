@@ -1,0 +1,125 @@
+(* LADON messenger — formal model 2: the hybrid DH ratchet (frame 0x04).
+   ProVerif 2.05. Mirrors RelayClientV2.swift on feat/otpk-pq-ratchet:
+     dhRatchetSend / dhRatchetReceive: every DH turn is hybrid — a fresh X25519
+       ratchet key AND a fresh one-time ML-KEM-768 exchange (encapsulate to the
+       KEM key the peer announced last; announce a new one; the used KEM secret
+       is deleted after decapsulation)
+     ratchetRootStep: HKDF(salt = root, ikm = dh | kemSs,
+       info = ratchetPk | encapsulatedToKemPk | kemCt | announcedKemPk) -> root, chain
+     deriveMessageKey: message key + next chain key; the used chain key is replaced
+   Three DH turns after the bootstrap chain, one message per chain:
+     chain 0 (A->B, the bootstrap chain), turn 1 (B->A), turn 2 (A->B), turn 3 (B->A).
+
+   One honest execution between Alice and Bob; the network attacker reads every
+   frame (out on c). The bootstrap itself is model 1 (bootstrap.pv); here the
+   initial root rk0 is a fresh secret shared by both.
+
+   Scenarios (run.sh):
+     dh   every X25519 secret is handed to the attacker when created
+     kem  every ML-KEM secret is handed to the attacker when created
+     pcs  Bob's complete session state is stolen right after he sent m1
+     fs   both complete session states are stolen after m3 (phase 1)
+   Post-compromise security is stated as usual for ratchets: the attacker reads
+   everything but does not inject during the healing turns (frames reach the
+   peer unaltered — in this model they are passed within the one process).
+
+   Abstractions: perfect primitives; one message per chain (skipped keys,
+   archived chains, message numbers omitted); signatures of the inner envelope
+   omitted (secrecy against a reading attacker does not depend on them). *)
+
+free c: channel.
+
+type key.
+type G.
+type exponent.
+type kemsk.
+type kempk.
+
+const g: G [data].
+fun exp(G, exponent): G.
+equation forall x: exponent, y: exponent; exp(exp(g, x), y) = exp(exp(g, y), x).
+
+fun kempub(kemsk): kempk.
+fun kemct(kempk, key): bitstring.
+fun kemss(kempk, key): key.
+reduc forall sk: kemsk, r: key; kemdec(sk, kemct(kempub(sk), r)) = kemss(kempub(sk), r).
+
+fun chainInit(key): key.                         (* deriveInitialChainKey *)
+fun stepRoot(key, G, key, bitstring): key.       (* ratchetRootStep, first 32 B *)
+fun stepChain(key, G, key, bitstring): key.      (* ratchetRootStep, last 32 B *)
+fun msgKey(key): key.                            (* deriveMessageKey, message key *)
+fun nextChain(key): key.                         (* deriveMessageKey, next chain key *)
+
+fun aead(key, bitstring, bitstring): bitstring.
+reduc forall k: key, ad: bitstring, m: bitstring; adec(k, ad, aead(k, ad, m)) = m.
+
+free m0, m1, m2, m3: bitstring [private].
+query attacker(m0).
+query attacker(m1).
+query attacker(m2).
+query attacker(m3).
+
+process
+  new rk0: key;
+  (* chain 0, Alice -> Bob. Alice's ratchet key a0 (= bootstrap EK) and her
+     announced one-time KEM key ka0. *)
+  new a0: exponent;
+  new ka0: kemsk;
+  (*@dh out(c, a0); @*)
+  (*@kem out(c, ka0); @*)
+  let ck0 = chainInit(rk0) in
+  let h0 = (exp(g, a0), kempub(ka0)) in
+  out(c, (h0, aead(msgKey(ck0), h0, m0)));
+
+  (* turn 1, Bob -> Alice: encapsulate to ka0, announce kb1 *)
+  new b1: exponent;
+  new r1: key;
+  new kb1: kemsk;
+  (*@dh out(c, b1); @*)
+  (*@kem out(c, kb1); @*)
+  let ct1 = kemct(kempub(ka0), r1) in
+  let h1 = (exp(g, b1), kempub(kb1), ct1) in
+  let t1 = (exp(g, b1), kempub(ka0), ct1, kempub(kb1)) in
+  let dh1 = exp(exp(g, a0), b1) in
+  let rk1 = stepRoot(rk0, dh1, kemss(kempub(ka0), r1), t1) in
+  let ck1 = stepChain(rk0, dh1, kemss(kempub(ka0), r1), t1) in
+  out(c, (h1, aead(msgKey(ck1), h1, m1)));
+  (* Bob is compromised right after sending m1: his whole session state —
+     root, the advanced sending chain, his ratchet key, his announced KEM secret *)
+  (*@pcs out(c, (rk1, nextChain(ck1), b1, kb1)); @*)
+
+  (* turn 2, Alice -> Bob: encapsulate to kb1, announce ka2 (ka0 is deleted) *)
+  new a2: exponent;
+  new r2: key;
+  new ka2: kemsk;
+  (*@dh out(c, a2); @*)
+  (*@kem out(c, ka2); @*)
+  let ct2 = kemct(kempub(kb1), r2) in
+  let h2 = (exp(g, a2), kempub(ka2), ct2) in
+  let t2 = (exp(g, a2), kempub(kb1), ct2, kempub(ka2)) in
+  let dh2 = exp(exp(g, b1), a2) in
+  let rk2 = stepRoot(rk1, dh2, kemss(kempub(kb1), r2), t2) in
+  let ck2 = stepChain(rk1, dh2, kemss(kempub(kb1), r2), t2) in
+  out(c, (h2, aead(msgKey(ck2), h2, m2)));
+
+  (* turn 3, Bob -> Alice: encapsulate to ka2, announce kb3 (kb1 is deleted) *)
+  new b3: exponent;
+  new r3: key;
+  new kb3: kemsk;
+  (*@dh out(c, b3); @*)
+  (*@kem out(c, kb3); @*)
+  let ct3 = kemct(kempub(ka2), r3) in
+  let h3 = (exp(g, b3), kempub(kb3), ct3) in
+  let t3 = (exp(g, b3), kempub(ka2), ct3, kempub(kb3)) in
+  let dh3 = exp(exp(g, a2), b3) in
+  let rk3 = stepRoot(rk2, dh3, kemss(kempub(ka2), r3), t3) in
+  let ck3 = stepChain(rk2, dh3, kemss(kempub(ka2), r3), t3) in
+  out(c, (h3, aead(msgKey(ck3), h3, m3)))
+  (* After m3 both session states are stolen: roots, advanced chains, current
+     ratchet keys, Bob's unused announced KEM secret. Alice's ka2 was used and
+     deleted; every earlier key was replaced and deleted. No separate phase is
+     needed: the attacker here only reads (the one honest process takes no
+     input), so a theft after the last message gives exactly the same
+     knowledge as a theft "later". (A phase-1 version did not terminate in
+     reasonable time with the DH equation.) *)
+  (*@fs ; out(c, (rk3, nextChain(ck3), a2, b3, kb3)) @*)

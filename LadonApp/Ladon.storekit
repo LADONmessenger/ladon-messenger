@@ -1,0 +1,56 @@
+{
+  "identifier" : "1A2B3C4D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "7E5F6A1B",
+      "localizations" : [
+
+      ],
+      "name" : "LADON Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "2C3D4E5F",
+          "introductoryOffer" : {
+            "internalID" : "3D4E5F6A",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Full access to LADON messenger — end-to-end encrypted, post-quantum, Tor-routed.",
+              "displayName" : "LADON messenger — Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "app.ladon.messenger.pro.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "LADON Monthly",
+          "subscriptionGroupID" : "7E5F6A1B",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

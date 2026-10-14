@@ -1,0 +1,155 @@
+/*
+  LADON messenger — Tamarin model: one pairing code opens at most one session.
+  Tamarin 1.12. Complements formal/proverif (ProVerif cannot prove this
+  property: it abstracts the deletion of the one-time prekey).
+
+  Mirrors feat/otpk-pq-ratchet:
+    PairingCodeV3.swift      code = identity (HSig pk, identity X25519 key)
+                             + one-time prekey (id, X25519, ML-KEM-768)
+    RelayClientV2.swift      bootstrapInitiator / bootstrapResponder /
+                             deriveBootRootKey; open(): the prekey is burned
+                             (consumeOwnPrekey) only after the frame
+                             authenticated, and a burned prekey never opens
+                             another session
+    PrekeyStoreV2.swift      the prekey lives in the Keychain until consumed
+    InnerEnvelopeV2.swift    HSig over sender pk + frame (recipient not signed)
+
+  The one-time prekey is a LINEAR fact: the rule that accepts a bootstrap
+  consumes it, exactly like the Keychain delete. The rule only fires for a
+  frame that verifies and decrypts, like the implementation (a tampered or
+  foreign frame does not burn the prekey).
+  Sanity check: tamarin-prover -D=NOLOCK makes the prekey persistent (never
+  deleted); the lemma one_code_one_session must then be FALSIFIED.
+
+  Abstractions: perfect primitives; ML-KEM as a KEM that encapsulates a fresh
+  key (kemdec(kemenc(k, kempk(sk)), sk) = k); HKDF as a hash; the AEAD as
+  symmetric encryption of header + message; the HKEM envelope layer omitted
+  (the attacker sees sender, signature and frame — more attacker power).
+  The two X25519 terms of the boot root (DH(EK, OTPK.x), DH(EK, IK.x)) are
+  left out ON PURPOSE: this model is about state (a prekey used once), which
+  does not depend on them, and with them Tamarin's precomputation did not
+  finish within 15 minutes. Their contribution (secrecy if either X25519 or
+  ML-KEM holds) is proven in formal/proverif/bootstrap.pv. Without them the
+  attacker has one secret fewer to break (more power), so what is proven here
+  holds a fortiori for the real protocol.
+*/
+theory LadonOneTimePrekey
+begin
+
+builtins: signing, hashing, symmetric-encryption
+
+functions: kempk/1, kemenc/2, kemdec/2
+equations: kemdec(kemenc(k, kempk(sk)), sk) = k
+
+restriction Equality:
+  "All x y #i. Eq(x, y) @ i ==> x = y"
+
+restriction OneRegistrationPerName:
+  "All A #i #j. Register(A) @ i & Register(A) @ j ==> #i = #j"
+
+// ----- identities (HSig signing key) -----
+rule Register:
+  [ Fr(~ltk) ]
+  --[ Register($A), Registered($A, pk(~ltk)) ]->
+  [ !Ltk($A, ~ltk), !Pk($A, pk(~ltk)), Out(pk(~ltk)) ]
+
+// The attacker may steal a signing key (any identity, any time).
+rule Reveal_ltk:
+  [ !Ltk($A, ltk) ] --[ RevealLtk($A) ]-> [ Out(ltk) ]
+
+// ----- the responder issues a pairing code (shown as QR) -----
+// The prekey is a linear fact OTPK (a Keychain item, consumed on use).
+// Under NOLOCK (sanity check) it is the persistent fact !OTPK: never deleted.
+#ifdef NOLOCK
+rule Issue_code_nolock:
+  [ !Ltk($B, ltkB), Fr(~id), Fr(~ksk) ]
+  --[ IssueCode($B, ~id) ]->
+  [ !OTPK($B, ~id, ~ksk),
+    Code($B, ~id, kempk(~ksk)),
+    Out(<pk(ltkB), ~id, kempk(~ksk)>) ]
+#else
+rule Issue_code:
+  [ !Ltk($B, ltkB), Fr(~id), Fr(~ksk) ]
+  --[ IssueCode($B, ~id) ]->
+  [ OTPK($B, ~id, ~ksk),
+    Code($B, ~id, kempk(~ksk)),                // the honest scanner sees it once
+    Out(<pk(ltkB), ~id, kempk(~ksk)>) ]        // may be photographed
+#endif
+
+// ----- the initiator scans the code and sends the first message -----
+rule Alice_first_message:
+  let ct    = kemenc(~k, otpkKem)
+      tr    = <pk(ltkA), pkB, id, otpkKem, ct>
+      root  = h(<~k, tr>)
+      mk    = h(<'msg', h(<'chain', root>)>)
+      hdr   = <id, ct>
+      frame = <hdr, senc(<hdr, ~m>, mk)>
+  in
+  [ Code($B, id, otpkKem), !Pk($B, pkB), !Ltk($A, ltkA),
+    Fr(~k), Fr(~m) ]
+  --[ AliceSent($A, $B, ~m) ]->
+  [ Out(<pk(ltkA), frame, sign(<pk(ltkA), frame>, ltkA)>) ]
+
+// ----- the responder accepts a bootstrap: verify, decrypt, burn the prekey -----
+// Consuming the linear OTPK fact is the Keychain delete (consumeOwnPrekey).
+// The input pattern demands a ciphertext encapsulated to this prekey and a
+// frame encrypted under the key derived from it: the rule fires only for a
+// frame that decapsulates, decrypts and (restriction Equality) verifies —
+// like the implementation, where anything else leaves the prekey in place.
+#ifdef NOLOCK
+rule Bob_bootstrap_nolock:
+  let ct    = kemenc(k, kempk(ksk))
+      hdr   = <id, ct>
+      tr    = <pkS, pk(ltkB), id, kempk(ksk), ct>
+      root  = h(<k, tr>)
+      mk    = h(<'msg', h(<'chain', root>)>)
+  in
+  [ !OTPK($B, id, ksk), !Ltk($B, ltkB),
+    In(<pkS, <hdr, senc(<hdr, m>, mk)>, sig>) ]
+  --[ Eq(verify(sig, <pkS, <hdr, senc(<hdr, m>, mk)>>, pkS), true),
+      Boot($B, id, ct),
+      BobAccepts(pkS, $B, m) ]->
+  [ ]
+#else
+rule Bob_bootstrap:
+  let ct    = kemenc(k, kempk(ksk))
+      hdr   = <id, ct>
+      tr    = <pkS, pk(ltkB), id, kempk(ksk), ct>
+      root  = h(<k, tr>)
+      mk    = h(<'msg', h(<'chain', root>)>)
+  in
+  [ OTPK($B, id, ksk), !Ltk($B, ltkB),
+    In(<pkS, <hdr, senc(<hdr, m>, mk)>, sig>) ]
+  --[ Eq(verify(sig, <pkS, <hdr, senc(<hdr, m>, mk)>>, pkS), true),
+      Boot($B, id, ct),
+      BobAccepts(pkS, $B, m) ]->
+  [ ]
+#endif
+
+// ----- properties -----
+
+// Sanity: the protocol can run to completion.
+lemma executable:
+  exists-trace
+  "Ex A B m pkA #i #j #r. AliceSent(A, B, m) @ i & BobAccepts(pkA, B, m) @ j
+     & Registered(A, pkA) @ r"
+
+// One pairing code opens at most one session.
+lemma one_code_one_session:
+  "All B id e1 e2 #i #j. Boot(B, id, e1) @ i & Boot(B, id, e2) @ j ==> #i = #j"
+
+// Bob accepts m from registered identity A only if A sent m to Bob — and
+// accepts each such message only once (no replay), unless A's signing key
+// was stolen.
+lemma injective_agreement:
+  "All A pkA B m #i #r.
+     BobAccepts(pkA, B, m) @ i & Registered(A, pkA) @ r
+     & not (Ex #x. RevealLtk(A) @ x)
+   ==> (Ex #j. AliceSent(A, B, m) @ j & #j < #i)
+       & not (Ex #k. BobAccepts(pkA, B, m) @ k & not (#k = #i))"
+
+// The first message stays secret.
+lemma first_message_secret:
+  "All A B m #i. AliceSent(A, B, m) @ i ==> not (Ex #k. K(m) @ k)"
+
+end
