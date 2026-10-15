@@ -174,7 +174,7 @@ struct SecurityView: View {
                                 .fontWeight(.semibold)
                         }
 
-                        Text("Every message gets a fresh key. Each time the conversation turns around, the whole key chain is renewed — and every 32nd turn adds a new post-quantum key on top. Nothing here needs your attention.")
+                        Text("Every message gets a fresh key. Each time the conversation turns around, the whole key chain is renewed, with a fresh post-quantum key exchange every time. Nothing here needs your attention.")
                             .font(.caption)
                             .foregroundColor(LadonTheme.textSecondary)
                     }
@@ -189,7 +189,7 @@ struct SecurityView: View {
                     VStack(alignment: .leading, spacing: 0) {
                     // FIX CRIT-7: Accurately describe feature — uses Ed25519 signatures,
                     // not zero-knowledge proofs. Honesty prevents false security claims.
-                    protectionRow("checkmark.seal.fill", "Message Authenticity", "Ed25519 digital signatures")
+                    protectionRow("checkmark.seal.fill", "Message Authenticity", "Ed25519 + ML-DSA-65 signatures")
                         .padding(16)
                     if !isDark { CardDivider() }
                     protectionRow("eye.slash.fill", "Sealed Sender", "Server cannot see who sends messages")
@@ -198,16 +198,16 @@ struct SecurityView: View {
                     protectionRow("waveform.path", "Cover Traffic", "Hides real communication patterns")
                         .padding(16)
                     if !isDark { CardDivider() }
-                    protectionRow("atom", "Post-Quantum Cryptography", "Kyber768 + Dilithium3 (NIST)")
+                    protectionRow("atom", "Post-Quantum Cryptography", "ML-KEM-768 + ML-DSA-65 (NIST)")
                         .padding(16)
                     if !isDark { CardDivider() }
-                    protectionRow("network", "Tor Routing", "All traffic routed through Tor network")
+                    protectionRow("network", "Tor Routing", "All message traffic routed through Tor")
                         .padding(16)
 
                     HStack(alignment: .top, spacing: 8) {
                         Image(systemName: "info.circle")
                             .foregroundColor(LadonTheme.greenInk)
-                        Text("These protections add extra layers beyond end-to-end encryption. Ed25519 signatures verify authenticity, sealed sender hides the sender from the server, cover traffic masks communication patterns, post-quantum cryptography protects against future quantum computers, and Tor routing anonymizes network traffic.")
+                        Text("These protections add extra layers beyond end-to-end encryption. Hybrid signatures (Ed25519 + ML-DSA-65) verify authenticity, sealed sender hides the sender from the server, cover traffic masks communication patterns, post-quantum cryptography protects against future quantum computers, and Tor routing anonymizes network traffic.")
                             .font(.footnote)
                             .foregroundColor(LadonTheme.textSecondary)
                     }
@@ -253,7 +253,7 @@ struct SecurityView: View {
                                         .frame(width: 24, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text("Message Encryption").fontWeight(.semibold)
-                                        Text("Signal Protocol with Double Ratchet algorithm. Every message uses a unique encryption key that is automatically deleted after use, ensuring perfect forward secrecy.").font(.caption).foregroundColor(LadonTheme.textSecondary)
+                                        Text("A hybrid double ratchet. Every message uses its own encryption key, and the key chain moves forward with every turn of the conversation.").font(.caption).foregroundColor(LadonTheme.textSecondary)
                                     }
                                     Spacer()
                                 }
@@ -263,7 +263,7 @@ struct SecurityView: View {
                                         .frame(width: 24, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text("Key Exchange").fontWeight(.semibold)
-                                        Text("X3DH (Extended Triple Diffie-Hellman) combined with Kyber768 post-quantum key encapsulation. Protects your keys even against future quantum computers.").font(.caption).foregroundColor(LadonTheme.textSecondary)
+                                        Text("Each pairing code carries a one-time key, so the first message already uses a fresh key exchange. Every exchange is hybrid: X25519 combined with ML-KEM-768, so an attacker would have to break both.").font(.caption).foregroundColor(LadonTheme.textSecondary)
                                     }
                                     Spacer()
                                 }
@@ -273,7 +273,7 @@ struct SecurityView: View {
                                         .frame(width: 24, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text("Digital Signatures").fontWeight(.semibold)
-                                        Text("Dilithium3 post-quantum signatures verify message authenticity. Each message is cryptographically signed to prevent tampering and impersonation.").font(.caption).foregroundColor(LadonTheme.textSecondary)
+                                        Text("Hybrid signatures: Ed25519 combined with ML-DSA-65. Each message is signed to prevent tampering and impersonation, and both signatures must be valid.").font(.caption).foregroundColor(LadonTheme.textSecondary)
                                     }
                                     Spacer()
                                 }
@@ -283,7 +283,7 @@ struct SecurityView: View {
                                         .frame(width: 24, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text("Symmetric Encryption").fontWeight(.semibold)
-                                        Text("ChaCha20-Poly1305 AEAD cipher provides authenticated encryption. Military-grade 256-bit security with built-in message authentication to detect tampering.").font(.caption).foregroundColor(LadonTheme.textSecondary)
+                                        Text("ChaCha20-Poly1305 with 256-bit keys: authenticated encryption that detects any tampering with a message.").font(.caption).foregroundColor(LadonTheme.textSecondary)
                                     }
                                     Spacer()
                                 }
@@ -313,7 +313,7 @@ struct SecurityView: View {
                                         .frame(width: 24, alignment: .leading)
                                     VStack(alignment: .leading, spacing: 2) {
                                         Text("Quantum Protection").fontWeight(.semibold)
-                                        Text("Kyber768 and Dilithium3 are NIST-standardized post-quantum algorithms. Your messages are protected against both current and future quantum computer attacks.").font(.caption).foregroundColor(LadonTheme.textSecondary)
+                                        Text("ML-KEM-768 and ML-DSA-65 are NIST-standardized post-quantum algorithms (FIPS 203 and 204). Each is combined with a classic algorithm, so both would have to be broken.").font(.caption).foregroundColor(LadonTheme.textSecondary)
                                     }
                                     Spacer()
                                 }

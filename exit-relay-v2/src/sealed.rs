@@ -258,10 +258,15 @@ async fn dir_put(s: &ExitState, body: &[u8], now: u64) -> Result<(), ApiError> {
     // stored, so a byte-identical republish (anyone can replay the public
     // bundle) is answered without spending the global verify budget. Same
     // outcome as the full path: OK, nothing stored, nothing replicated.
-    if s.directory.check_put(&bundle.recipient_id, bundle.published_at, now, body)
-        == Ok(ladon_relay_core_v2::store::DirectoryPutCheck::Identical)
-    {
-        return Ok(());
+    match s.directory.check_put(&bundle.recipient_id, bundle.published_at, now, body) {
+        Ok(ladon_relay_core_v2::store::DirectoryPutCheck::Identical) => return Ok(()),
+        Ok(ladon_relay_core_v2::store::DirectoryPutCheck::Fresh) => {}
+        // F1 step A: a refusal (full directory, stale or older bundle) is
+        // decided before the signature check, so a flood against a full
+        // directory no longer spends the global verify budget. Nothing is
+        // stored either way; bundles are public via DIR_GET, so answering
+        // before verification reveals nothing new.
+        Err(e) => return Err(crate::handlers::map_put_err(e)),
     }
     s.sealed_limits.take_verify(now)?;
     put_directory_inner(s, &rid_hex, body, &s.sealed_limits.dir_put_per_rid).await

@@ -20,7 +20,6 @@
 		1A000025 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000024 /* Contact.swift */; };
 		1A000032 /* TorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000033 /* TorManager.swift */; };
 		1A000041 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A000040 /* KeyManager.swift */; };
-		240DDED071A64E6E9C7494C0 /* IPtProxy.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FDFACBACFBDD48BFAD0AD6CD /* IPtProxy.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		25B08229CE1B12A5 /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9267B006C1142D6 /* Manrope-ExtraBold.ttf */; };
 		FADE000000000B01 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F01 /* Manrope-Regular.ttf */; };
 		FADE000000000B02 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADE000000000F02 /* Manrope-Medium.ttf */; };
@@ -143,7 +142,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				240DDED071A64E6E9C7494C0 /* IPtProxy.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -763,7 +761,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = LadonApp/Ladon.Debug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = M6F4LU2CGM;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -866,7 +864,7 @@
 				CODE_SIGN_ENTITLEMENTS = LadonApp/Ladon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 15;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = M6F4LU2CGM;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -877,7 +875,7 @@
 					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1055,7 +1053,7 @@
 					"$(SRCROOT)/LadonApp/Frameworks/tor.xcframework/ios-arm64_x86_64-simulator",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

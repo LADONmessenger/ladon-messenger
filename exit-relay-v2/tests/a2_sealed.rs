@@ -38,6 +38,12 @@ struct Running {
 }
 
 async fn spawn() -> Running {
+    spawn_with(|_| {}).await
+}
+
+/// `spawn` with a hook to adjust the state before it is served (capacity,
+/// verify budget).
+async fn spawn_with(adjust: impl FnOnce(&mut exit::ExitState)) -> Running {
     let kp = HkemKeyPair::generate();
     let hkem_pk = kp.public_key_bytes().to_vec();
     let exit_id = exit_id_from_hkem_pk(&hkem_pk);
@@ -46,7 +52,7 @@ async fn spawn() -> Running {
     let canary = std::env::temp_dir().join("ladon-test-a2-canary.json");
     let _ = std::fs::write(&canary, br#"{"ok":true}"#);
     let push = Arc::new(RecordingPushClient::new());
-    let state = common::test_state(
+    let mut state = common::test_state(
         exit_id,
         kp,
         canary,
@@ -57,6 +63,7 @@ async fn spawn() -> Running {
             push: Some(push.clone() as Arc<dyn exit::PushClient>),
         },
     );
+    adjust(&mut state);
     let app = exit::router(Arc::new(state));
     let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
     let addr = listener.local_addr().unwrap();
@@ -512,6 +519,41 @@ async fn identical_republish_spends_no_budget_and_does_not_replicate() {
     assert_eq!(running.push.replicate_snapshot().len(), 2);
     let got = call(&running, Kind::DirGet, &r.rid.0).await;
     assert_eq!(&got.body[..], &newer[..]);
+}
+
+/// F1 step A: a DIR_PUT refused because the directory is full (every entry
+/// active) is answered before the signature check, so it does not spend the
+/// global verify budget. With a budget of one verify per second, a refused
+/// newcomer is followed in the same second by the owner's verified republish,
+/// which only succeeds if the refusal left the budget untouched.
+#[tokio::test]
+async fn full_directory_refusal_spends_no_verify_budget() {
+    let running = spawn_with(|s| {
+        s.directory = ladon_relay_core_v2::store::RecipientDirectory::with_capacity(1);
+        s.sealed_limits = exit::sealed::SealedLimits::with_verify_cap(1);
+    })
+    .await;
+    let owner = common::new_recipient();
+    let first = common::make_bundle(&owner, running.exit_id, common::now_sec() - 5);
+    assert_eq!(call(&running, Kind::DirPut, &first).await.status, status::OK);
+
+    // Start of a fresh one-second budget window, with room for two calls.
+    loop {
+        let ms = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().subsec_millis();
+        if ms < 100 {
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(10)).await;
+    }
+    let newcomer = common::new_recipient();
+    let refused = common::make_bundle(&newcomer, running.exit_id, common::now_sec());
+    assert_eq!(call(&running, Kind::DirPut, &refused).await.status, status::UNAVAILABLE, "directory is full");
+    let newer = common::make_bundle(&owner, running.exit_id, common::now_sec());
+    assert_eq!(
+        call(&running, Kind::DirPut, &newer).await.status,
+        status::OK,
+        "the refusal left the one verify of this second unspent"
+    );
 }
 
 /// SRV-13 (F12): the fetch signature names the exit it is meant for:

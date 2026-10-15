@@ -22,6 +22,9 @@ struct ConversationListView: View {
     @State private var blockCandidate: Conversation?
     /// Why the last block/unblock failed (shown once).
     @State private var blockError: String?
+    /// Chat whose contact the user asked to report (confirmation pending).
+    @State private var reportCandidate: Conversation?
+    @Environment(\.openURL) private var openURL
     @State private var navigationPath = NavigationPath()
     
     var body: some View {
@@ -163,6 +166,11 @@ struct ConversationListView: View {
                                             Label("Block", systemImage: "hand.raised")
                                         }
                                     }
+                                    Button(role: .destructive) {
+                                        reportCandidate = conversation
+                                    } label: {
+                                        Label("Report", systemImage: "exclamationmark.bubble")
+                                    }
                                 }
                                 Button(role: .destructive) {
                                     viewModel.deleteConversation(conversation)
@@ -235,6 +243,18 @@ struct ConversationListView: View {
                 }
             } message: {
                 Text("This contact can no longer send you messages. Your other contacts receive your new key automatically.")
+            }
+            .alert("Report Contact?", isPresented: Binding(
+                get: { reportCandidate != nil },
+                set: { if !$0 { reportCandidate = nil } }
+            )) {
+                Button("Cancel", role: .cancel) { reportCandidate = nil }
+                Button("Report", role: .destructive) {
+                    if let c = reportCandidate, let rid = Self.contactRid(c) { report(rid) }
+                    reportCandidate = nil
+                }
+            } message: {
+                Text("The contact is blocked and an email to info@ladon.app opens. Messages are end-to-end encrypted, so we cannot read them: describe in the email what happened. Nothing is sent automatically.")
             }
             .alert("Error", isPresented: Binding(
                 get: { blockError != nil },
@@ -314,6 +334,22 @@ struct ConversationListView: View {
         catch {
             SecureLogger.error("[ConversationList] block failed: \(error)")
             blockError = LanguageManager.localized("Could not block this contact. Please try again.")
+        }
+    }
+
+    /// Report = block, then a mail draft to us. Nothing about the contact or
+    /// the chat goes into the draft: the user writes what happened, and the
+    /// mail leaves through their own mail app, not through the relays.
+    private func report(_ rid: RecipientIdV2) {
+        if !BlockListV2.contains(rid) {
+            block(rid)
+            guard blockError == nil else { return }
+        }
+        guard let url = URL(string: "mailto:info@ladon.app?subject=LADON%20messenger%20report") else { return }
+        openURL(url) { accepted in
+            if !accepted {
+                blockError = LanguageManager.localized("The contact is blocked. No mail app is set up: please write to info@ladon.app.")
+            }
         }
     }
 

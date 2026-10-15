@@ -281,16 +281,6 @@
         }
       }
     },
-    "All traffic routed through Tor network": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gesamter Datenverkehr über Tor-Netzwerk geleitet"
-          }
-        }
-      }
-    },
     "Anonymous Connection": {
       "localizations": {
         "de": {
@@ -561,6 +551,26 @@
         }
       }
     },
+    "Report": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melden"
+          }
+        }
+      }
+    },
+    "Report Contact?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontakt melden?"
+          }
+        }
+      }
+    },
     "Set your LADON PIN": {
       "localizations": {
         "de": {
@@ -577,6 +587,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Die PIN konnte nicht gespeichert werden. Bitte versuche es erneut."
+          }
+        }
+      }
+    },
+    "The contact is blocked and an email to info@ladon.app opens. Messages are end-to-end encrypted, so we cannot read them: describe in the email what happened. Nothing is sent automatically.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kontakt wird blockiert und eine E-Mail an info@ladon.app öffnet sich. Nachrichten sind Ende-zu-Ende-verschlüsselt, wir können sie nicht lesen: Beschreibe in der E-Mail, was passiert ist. Es wird nichts automatisch gesendet."
+          }
+        }
+      }
+    },
+    "The contact is blocked. No mail app is set up: please write to info@ladon.app.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kontakt ist blockiert. Es ist keine Mail-App eingerichtet: Bitte schreibe an info@ladon.app."
           }
         }
       }
@@ -730,16 +760,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zensurumgehung"
-          }
-        }
-      }
-    },
-    "ChaCha20-Poly1305 AEAD cipher provides authenticated encryption. Military-grade 256-bit security with built-in message authentication to detect tampering.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ChaCha20-Poly1305 AEAD-Verschlüsselung bietet authentifizierte Verschlüsselung. Militärische 256-Bit-Sicherheit mit integrierter Nachrichtenauthentifizierung zur Erkennung von Manipulationen."
           }
         }
       }
@@ -1374,16 +1394,6 @@
         }
       }
     },
-    "Dilithium3 post-quantum signatures verify message authenticity. Each message is cryptographically signed to prevent tampering and impersonation.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dilithium3 Post-Quanten-Signaturen verifizieren die Nachrichtenauthentizität. Jede Nachricht wird kryptographisch signiert, um Manipulation und Identitätsdiebstahl zu verhindern."
-          }
-        }
-      }
-    },
     "Disable Apple Push Notifications": {
       "localizations": {
         "de": {
@@ -1431,16 +1441,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "E2E-Verschlüsselung"
-          }
-        }
-      }
-    },
-    "Ed25519 digital signatures": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ed25519-Digitalsignaturen"
           }
         }
       }
@@ -1533,17 +1533,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sichere Verbindung wird aufgebaut … %@%%"
-          }
-        }
-      }
-    },
-    "Every message gets a fresh key. Each time the conversation turns around, the whole key chain is renewed — and every 32nd turn adds a new post-quantum key on top. Nothing here needs your attention.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jede Nachricht bekommt einen frischen Schlüssel. Bei jedem Hin und Her wird die gesamte Schlüsselkette erneuert — und jeder 32. Wechsel legt zusätzlich einen neuen Post-Quanten-Schlüssel darüber. Hier musst du nichts tun."
           }
         }
       }
@@ -1936,26 +1925,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Schlüssel-Initialisierung fehlgeschlagen.\nBitte erneut versuchen."
-          }
-        }
-      }
-    },
-    "Kyber768 + Dilithium3 (NIST)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kyber768 + Dilithium3 (NIST)"
-          }
-        }
-      }
-    },
-    "Kyber768 and Dilithium3 are NIST-standardized post-quantum algorithms. Your messages are protected against both current and future quantum computer attacks.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kyber768 und Dilithium3 sind NIST-standardisierte Post-Quanten-Algorithmen. Deine Nachrichten sind sowohl gegen heutige als auch zukünftige Angriffe durch Quantencomputer geschützt."
           }
         }
       }
@@ -3479,16 +3448,6 @@
         }
       }
     },
-    "Signal Protocol with Double Ratchet algorithm. Every message uses a unique encryption key that is automatically deleted after use, ensuring perfect forward secrecy.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Signal-Protokoll mit Double-Ratchet-Algorithmus. Jede Nachricht verwendet einen einzigartigen Verschlüsselungsschlüssel, der nach Gebrauch automatisch gelöscht wird, was perfekte Vorwärtsgeheimnis gewährleistet."
-          }
-        }
-      }
-    },
     "Skip": {
       "extractionState": "stale",
       "localizations": {
@@ -3718,16 +3677,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Der Link funktioniert einmal und 24 Stunden lang."
-          }
-        }
-      }
-    },
-    "These protections add extra layers beyond end-to-end encryption. Ed25519 signatures verify authenticity, sealed sender hides the sender from the server, cover traffic masks communication patterns, post-quantum cryptography protects against future quantum computers, and Tor routing anonymizes network traffic.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Schutzmechanismen fügen zusätzliche Ebenen jenseits der Ende-zu-Ende-Verschlüsselung hinzu. Ed25519-Signaturen verifizieren die Authentizität, verdeckter Absender verbirgt den Sender vor dem Server, Tarnverkehr maskiert Kommunikationsmuster, Post-Quanten-Kryptographie schützt vor zukünftigen Quantencomputern, und Tor-Routing anonymisiert den Netzwerkverkehr."
           }
         }
       }
@@ -4163,16 +4112,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Funktioniert einmal. Alle 10 Minuten erscheint ein neuer Code."
-          }
-        }
-      }
-    },
-    "X3DH (Extended Triple Diffie-Hellman) combined with Kyber768 post-quantum key encapsulation. Protects your keys even against future quantum computers.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "X3DH (Extended Triple Diffie-Hellman) kombiniert mit Kyber768 Post-Quanten-Schlüsselkapselung. Schützt deine Schlüssel auch gegen zukünftige Quantencomputer."
           }
         }
       }
@@ -4946,6 +4885,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dein Trinkgeld hilft, die Server am Laufen zu halten."
+          }
+        }
+      }
+    },
+    "Every message gets a fresh key. Each time the conversation turns around, the whole key chain is renewed, with a fresh post-quantum key exchange every time. Nothing here needs your attention.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jede Nachricht bekommt einen frischen Schlüssel. Bei jedem Hin und Her wird die gesamte Schlüsselkette erneuert, jedes Mal mit einem frischen Post-Quanten-Schlüsselaustausch. Hier musst du nichts tun."
+          }
+        }
+      }
+    },
+    "Ed25519 + ML-DSA-65 signatures": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ed25519- + ML-DSA-65-Signaturen"
+          }
+        }
+      }
+    },
+    "ML-KEM-768 + ML-DSA-65 (NIST)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ML-KEM-768 + ML-DSA-65 (NIST)"
+          }
+        }
+      }
+    },
+    "All message traffic routed through Tor": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesamter Nachrichtenverkehr über Tor"
+          }
+        }
+      }
+    },
+    "These protections add extra layers beyond end-to-end encryption. Hybrid signatures (Ed25519 + ML-DSA-65) verify authenticity, sealed sender hides the sender from the server, cover traffic masks communication patterns, post-quantum cryptography protects against future quantum computers, and Tor routing anonymizes network traffic.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Schutzmechanismen fügen zusätzliche Ebenen jenseits der Ende-zu-Ende-Verschlüsselung hinzu. Hybride Signaturen (Ed25519 + ML-DSA-65) verifizieren die Authentizität, verdeckter Absender verbirgt den Sender vor dem Server, Tarnverkehr maskiert Kommunikationsmuster, Post-Quanten-Kryptographie schützt vor zukünftigen Quantencomputern, und Tor-Routing anonymisiert den Netzwerkverkehr."
+          }
+        }
+      }
+    },
+    "A hybrid double ratchet. Every message uses its own encryption key, and the key chain moves forward with every turn of the conversation.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein hybrider Double Ratchet. Jede Nachricht hat ihren eigenen Schlüssel, und die Schlüsselkette geht bei jedem Hin und Her weiter."
+          }
+        }
+      }
+    },
+    "Each pairing code carries a one-time key, so the first message already uses a fresh key exchange. Every exchange is hybrid: X25519 combined with ML-KEM-768, so an attacker would have to break both.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeder Pairing-Code enthält einen Einmal-Schlüssel, damit schon die erste Nachricht einen frischen Schlüsselaustausch nutzt. Jeder Austausch ist hybrid: X25519 kombiniert mit ML-KEM-768 — ein Angreifer müsste beide brechen."
+          }
+        }
+      }
+    },
+    "Hybrid signatures: Ed25519 combined with ML-DSA-65. Each message is signed to prevent tampering and impersonation, and both signatures must be valid.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hybride Signaturen: Ed25519 kombiniert mit ML-DSA-65. Jede Nachricht wird signiert, um Manipulation und Identitätsbetrug zu verhindern — beide Signaturen müssen gültig sein."
+          }
+        }
+      }
+    },
+    "ChaCha20-Poly1305 with 256-bit keys: authenticated encryption that detects any tampering with a message.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ChaCha20-Poly1305 mit 256-Bit-Schlüsseln: authentifizierte Verschlüsselung, die jede Manipulation einer Nachricht erkennt."
+          }
+        }
+      }
+    },
+    "ML-KEM-768 and ML-DSA-65 are NIST-standardized post-quantum algorithms (FIPS 203 and 204). Each is combined with a classic algorithm, so both would have to be broken.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ML-KEM-768 und ML-DSA-65 sind von NIST standardisierte Post-Quanten-Verfahren (FIPS 203 und 204). Jedes ist mit einem klassischen Verfahren kombiniert — beide müssten gebrochen werden."
           }
         }
       }

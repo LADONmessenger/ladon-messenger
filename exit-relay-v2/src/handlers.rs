@@ -237,6 +237,28 @@ pub(crate) async fn deliver(s: &ExitState, mut parsed: OuterPlaintext) -> Result
     Ok(())
 }
 
+/// One mapping (and log line) for every directory PUT refusal, shared by the
+/// pre-verify check in `sealed::dir_put` and the verified path below. The
+/// "directory full" text is what the F1 monitoring counts.
+pub(crate) fn map_put_err(e: DirectoryPutError) -> ApiError {
+    match e {
+        DirectoryPutError::NotMonotonic => {
+            tracing::warn!("directory PUT rejected: bundle not newer than stored");
+            ApiError::Replay
+        }
+        DirectoryPutError::Stale => {
+            tracing::warn!("directory PUT rejected: no stored bundle and this one is too old");
+            ApiError::Replay
+        }
+        // F19: full, and every stored recipient was active within the
+        // mailbox TTL. Retryable for the client.
+        DirectoryPutError::Full => {
+            tracing::warn!("directory PUT rejected: directory full of active recipients");
+            ApiError::Unavailable
+        }
+    }
+}
+
 /// `rid_limiter`: A2 per-recipient DIR_PUT limit, checked after the signature
 /// and the rid binding held — never before, or anyone could spend a
 /// victim's budget with forged bundles and keep it from republishing.
@@ -292,22 +314,6 @@ pub(crate) async fn put_directory_inner(
     // a rollback/stale one is refused as before, also without budget. Only
     // a real update (`Fresh`) spends the budget.
     let now = now_sec();
-    let map_put_err = |e| match e {
-        DirectoryPutError::NotMonotonic => {
-            tracing::warn!("directory PUT rejected: bundle not newer than stored");
-            ApiError::Replay
-        }
-        DirectoryPutError::Stale => {
-            tracing::warn!("directory PUT rejected: no stored bundle and this one is too old");
-            ApiError::Replay
-        }
-        // F19: full, and every stored recipient was active within the
-        // mailbox TTL. Retryable for the client.
-        DirectoryPutError::Full => {
-            tracing::warn!("directory PUT rejected: directory full of active recipients");
-            ApiError::Unavailable
-        }
-    };
     match s.directory.check_put(&path_rid, bundle.published_at, now, body).map_err(map_put_err)? {
         DirectoryPutCheck::Identical => return Ok(()),
         DirectoryPutCheck::Fresh => {}

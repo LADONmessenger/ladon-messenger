@@ -8,9 +8,14 @@
       "internalID": "71900000",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 5 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 5",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.5",
@@ -23,9 +28,14 @@
       "internalID": "71900001",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 10 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 10",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.10",
@@ -38,9 +48,14 @@
       "internalID": "71900002",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 15 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 15",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.15",
@@ -53,9 +68,14 @@
       "internalID": "71900003",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 20 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 20",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.20",
@@ -68,9 +88,14 @@
       "internalID": "71900004",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 25 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 25",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.25",
@@ -83,9 +108,14 @@
       "internalID": "71900005",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 50 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 50",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.50",
@@ -98,9 +128,14 @@
       "internalID": "71900006",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 100 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 100",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.100",
@@ -113,9 +148,14 @@
       "internalID": "71900007",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 500 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 500",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.500",
@@ -128,9 +168,14 @@
       "internalID": "71900008",
       "localizations": [
         {
-          "description": "A one-time tip of CHF 1000 towards the servers. Unlocks nothing.",
-          "displayName": "Tip CHF 1000",
+          "description": "One-time tip for the servers. Unlocks nothing.",
+          "displayName": "Tip",
           "locale": "en_US"
+        },
+        {
+          "description": "Einmalig, für die Server. Schaltet nichts frei.",
+          "displayName": "Trinkgeld",
+          "locale": "de"
         }
       ],
       "productID": "app.ladon.messenger.tip.1000",
@@ -138,7 +183,10 @@
       "type": "Consumable"
     }
   ],
-  "settings": {},
+  "settings": {
+    "_locale": "en_CH",
+    "_storefront": "CHE"
+  },
   "subscriptionGroups": [],
   "version": {
     "major": 2,
